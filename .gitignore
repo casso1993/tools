@@ -1,0 +1,17 @@
+# 忽略 IDE 配置
+.vscode/
+
+# 忽略 build
+build/
+
+# 忽略 catkin_make 文件
+devel/
+
+# 忽略 catkin_workspace 文件
+.catkin_workspace
+
+# 忽略所有pcd
+*.pcd
+
+# 忽略 bag 文件
+*.bag

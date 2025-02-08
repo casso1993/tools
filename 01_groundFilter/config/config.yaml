@@ -1,0 +1,25 @@
+load_path: "/tools/01_groundFilter/pcd/guotang_map.pcd"
+save_path: "/tools/01_groundFilter/result/guotang_map.pcd"
+num_threads: 16          # 多线程
+
+# APMF参数
+APMF_available: true
+max_window_size: 3       # 最大窗口大小: 3
+slope: 0.1               # 地形坡度参数: 0.1
+initial_distance: 0.10   # 初始高差阈值: 0.15  重要参数，推荐路牙高度
+max_distance: 10         # 最大高差阈值: 10 推荐最小建筑高度
+filter_cell_size: 1      # 滤波器网格大小: 1
+base: 0                  # 地面基准高度: 0
+
+# CSF参数
+CSF_available: true
+bSloopSmooth: true       # 是否进行坡度平滑 true
+time_step: 0.65          # 时间步长 0.65 
+class_threshold: 0.05    # 分类阈值 0.5  越大地面点越少 保留路牙可以用0.05
+cloth_resolution: 1.0    # 布料分辨率 1.0 
+rigidness: 3             # 布料刚性 3
+
+# 高度滤波参数
+height_filter_available: false
+LiDAR_height_above_ground: 3.0 # 激光雷达离地高度
+Filter_height_from_ground: 15 # 滤波高度

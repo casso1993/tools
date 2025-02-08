@@ -1,0 +1,14 @@
+# 1: raw data, 2: slam
+which_bag: 1
+
+slam:
+  bag_name: "/tools/07_bagRecorder/src/bagRecorder/bag/minhang_slam_data.bag"
+  tf_topic: "/tf"
+  odom_topic: "/Odometry"
+  point_cloud_topic: "/cloud_registered"
+
+LI:
+  bag_name: "/tools/07_bagRecorder/src/bagRecorder/bag/lingong_front.bag"
+  IMU_topic: "/imu_raw"
+  LiDAR_topic: "/points_raw"
+  GNSS_topic: "/gnss"

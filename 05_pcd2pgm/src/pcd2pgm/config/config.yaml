@@ -1,0 +1,9 @@
+file_directory: "/Documents/RSdata/mh2/" # 存放pcd文件的路径
+file_name: "F_scans"                                # pcd文件名称
+min_height_threshold: 0.1                           # 选取的范围　最小的高度
+max_height_threshold: 2.0                           # 选取的范围　最大的高度
+pass_through_flag: 0                                # 0 选取高度范围内的，１选取高度范围外的
+radius_threshold: 0.5                               # 半径滤波的半径
+point_count_threshold: 10                           # 半径滤波的要求点数个数
+map_resolution: 0.05                                # 存储的栅格map的分辨率
+map_topic_name: "map"                               # 转换后发布的二维地图的topic，默认使用map即可，可使用map_server保存

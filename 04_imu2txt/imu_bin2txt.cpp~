@@ -1,0 +1,172 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <iostream>
+#include <fstream>
+#include <string>
+
+
+using namespace std;
+
+#define FILE_NAME_LENGTH 128
+#define MAX_READ_LENGTH  50000
+typedef unsigned char    BYTE;
+#define NEWIMU 1
+
+#pragma pack(push, 1)
+
+#if NEWIMU
+typedef struct _STR_IMU
+{
+	BYTE               HEAD;          
+	unsigned long long ullSystemTime; 
+	double             dLatitude;     
+	double             dLongitude;    
+	float              fAltitude;     
+	float              fVn;          
+	float              fVe;          
+	float              fVu;          
+	float              fRollAngle;   
+	float              fPitchAngle;  
+	float              fHeadingAngle; 
+	float              fAccX;        
+	float              fAccY;         
+	float              fAccZ;         
+	float              fGyroX;        
+	float              fGyroY;        
+	float              fGyroZ;        
+	char               cSystemStatus;                                       
+	char               GPS_Status;    
+	float              fCanSpeed;    
+	float              fReserve1;     
+	float              fReserve2;    
+}STR_IMU,*PSTR_IMU;
+#else
+
+typedef struct s_imu{
+    char reserve;
+    double dLatitude;
+    double dLongitude;
+    float fAltitude;
+    float fLateralSpeed; //north
+    float fLinearSpeed;	 //east
+    float fVerticalSpeed;
+    float fRollAngle;
+    float fPitchAngle;
+    float fHeadingAngle;
+    float fLinearAcceleration;
+    float fLateralAcceleration;
+    float fVerticalAcceleration;
+    float fRollSpeed;
+    float fPitchSpeed;
+    float fHeadingSpeed;
+    unsigned long long ullSystemTime;
+    char cSystemStatus;
+    char GPS_Status;
+    float fOriLinearSpeed;
+    float fSteeringAngle;
+    float fSteeringSpeed;
+} STR_IMU,*PSTR_IMU;
+
+#endif
+#pragma pack(pop)
+
+
+int main(int argc, char **argv)
+{
+    if(argc < 3)
+    {
+        cout << "usage: imu_bin2txt bin_file txt_file" << endl;
+        return -1;
+    }
+    char pchBuffer[MAX_READ_LENGTH];
+    int iRet = 0;
+    STR_IMU *pstrTarget;
+    int iDataLength = sizeof(STR_IMU);
+    std::string strFilePath(argv[1]);
+    std::string strTxtPath(argv[2]);
+    FILE *pFd_imu = fopen(strFilePath.c_str(), "rb");
+    FILE *pSaveFile = fopen(strTxtPath.c_str(), "w");
+    if(NULL == pFd_imu || NULL == pSaveFile)
+    {
+        cout << "=====> Cannot Open file " << endl;
+        return -1;
+    }
+    cout << "size of IMU: " << sizeof(STR_IMU) << std::endl;
+    while(!feof(pFd_imu))
+    {
+#if 1
+        iRet= fread(pchBuffer, 1, iDataLength + 9, pFd_imu);
+        if(iRet != iDataLength + 9)
+        {
+            if(!feof(pFd_imu))
+            {
+                printf("<%s> Read data fail, returned len %u, expected %u, EOF = %d.\n", 
+                strFilePath.c_str(), iRet, iDataLength, EOF);
+            }
+            break;
+        }
+		pstrTarget = (STR_IMU *)(pchBuffer+8);
+#else
+		int tt = fgetc(pFd_imu);
+		if(tt != 0x0E)
+		{
+			continue;
+		}
+		iRet= fread(pchBuffer, 1, iDataLength, pFd_imu);
+		pstrTarget = (STR_IMU *)pchBuffer;
+#endif
+        //pstrTarget = (STR_IMU *)pchBuffer;
+        double lat = pstrTarget->dLatitude;
+        double lon = pstrTarget->dLongitude;
+        double alti = pstrTarget->fAltitude;
+        double roll = pstrTarget->fRollAngle;
+        double pitch = pstrTarget->fPitchAngle;
+        double yaw = pstrTarget->fHeadingAngle;
+		
+#if NEWIMU
+		double Vn = pstrTarget->fVn;
+		double Ve = pstrTarget->fVe;
+		double Vu = pstrTarget->fVu;
+		float  fAccX = pstrTarget->fAccX;        
+		float  fAccY = pstrTarget->fAccY;         
+		float  fAccZ = pstrTarget->fAccZ;         
+		float  fGyroX = pstrTarget->fGyroX;        
+		float  fGyroY = pstrTarget->fGyroY;        
+		float  fGyroZ = pstrTarget->fGyroZ; 
+#else
+		double lateralSpeed = pstrTarget->fLateralSpeed;
+		double linearSpeed = pstrTarget->fLinearSpeed;
+		double verticalSpeed = pstrTarget->fVerticalSpeed;
+#endif
+		int gps_state = pstrTarget->GPS_Status;
+		int sys_state = pstrTarget->cSystemStatus;
+
+        float fCanSpeed = pstrTarget->fCanSpeed;
+/*
+    float fLateralSpeed;
+    float fLinearSpeed;
+    float fVerticalSpeed;
+*/
+        //unsigned long long ulltime = pstrTarget->ullSystemTime;
+		unsigned long long ulltime = pstrTarget->ullSystemTime /100;
+        cout<<"gps_state:"<<gps_state<<"  sys_state:"<<sys_state<<endl;
+
+#if NEWIMU
+        fprintf(pSaveFile, "%lld %.10f %.10f %f %f %f %f %f %f %f %d %d %f\n", ulltime, lat, lon, alti, roll, pitch, yaw, Vn, Ve, Vu, gps_state,sys_state, fCanSpeed);
+//fprintf(pSaveFile, "%lld %f %f %f %d %d %f %f %f %f %f %f %f\n", ulltime, Vn, Ve, Vu, gps_state,sys_state,  fAccX,fAccY,fAccZ,fGyroX,fGyroY,fGyroZ,fCanSpeed);
+#else
+
+		fprintf(pSaveFile, "%lld %f %f %f %f %f %f %f %f %f %d %d\n", ulltime, lat, lon, alti, roll, pitch, yaw, lateralSpeed, linearSpeed, 					verticalSpeed, gps_state, sys_state);
+#endif
+        // char ch = getchar();
+
+    }
+    std::fclose(pFd_imu);
+    std::fclose(pSaveFile);
+    cout << "finish!" << endl;
+    return 0;
+}
+
+
+
+

@@ -1,0 +1,10 @@
+<launch>
+    <rosparam command="load" file="$(find bag_recorder)/config/config.yaml" />
+    
+    <!-- true: LIbagRecorder, false: SLAMbagRecorder -->
+    <arg name="recorder_type" default="true" />  
+
+    <node pkg="bag_recorder" type="LIbagRecorder" name="LIbagRecorder" output="screen" if="$(arg recorder_type)"/>
+    <node pkg="bag_recorder" type="SLAMbagRecorder" name="SLAMbagRecorder" output="screen" unless="$(arg recorder_type)"/>
+
+</launch>

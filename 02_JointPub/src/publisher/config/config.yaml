@@ -1,0 +1,23 @@
+PCD_files_path: "/Documents/RSdata/lingong_back"
+IMU_file_path: "/Documents/RSdata/lingong_back"
+
+is_GNSS_available: true
+is_path_available: false
+
+LiDAR:
+  topic: "points_raw"
+  frame_id: "laser"
+  pub_rate: 10.0 #总文件数/时间跨度
+
+IMU:
+  topic: "imu_raw"
+  frame_id: "imu_link"
+  pub_rate: 125.0 
+
+GNSS:
+  topic: "gnss"
+  frame_id: "gnss_link"
+
+path:
+  topic: "imu_path"
+  frame_id: "odom"

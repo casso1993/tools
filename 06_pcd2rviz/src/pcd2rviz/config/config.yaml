@@ -1,0 +1,16 @@
+load_path: "/tools/06_pcd2rviz/src/pcd2rviz/pcd/test1.pcd" # 加载点云路径
+save_path: "/tools/06_pcd2rviz/src/pcd2rviz/result/test1.pcd" # 保存点云路径
+
+# 半径异常值移除
+removal_available: true # 是否开启异常值移除
+set_specific_height: true # 是否设置高度
+specific_height: [-2.0, 0] # 高度范围
+radius_search: 0.1 # 半径
+min_neighbors: 10 # 最小邻域点数
+
+# 降采样
+downsampling_available: true # 是否开启降采样
+downsampling_leaf_size: 0.2 # 越少越密
+
+# 保存点云
+save_pcd_en: true # 是否保存点云
