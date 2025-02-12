@@ -178,7 +178,7 @@ int main(int argc, char **argv) {
                 break;
 
             case 3:
-                fprintf(pSaveFile, "%lld.%lld %f %f %f %f %f %f \n", ulltime / 1000, ulltime % 1000, fAccX, fAccY,
+                fprintf(pSaveFile, "%lld.%03lld %f %f %f %f %f %f \n", ulltime / 1000, ulltime % 1000, fAccX, fAccY,
                         fAccZ, fGyroX, fGyroY, fGyroZ);
                 break;
 

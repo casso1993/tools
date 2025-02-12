@@ -1,7 +1,7 @@
-PCD_files_path: "/Documents/RSdata/lingong_back"
-IMU_file_path: "/Documents/RSdata/lingong_back"
+PCD_files_path: "/Documents/robosense_data/foshan"
+IMU_file_path: "/Documents/robosense_data/foshan"
 
-is_GNSS_available: true
+is_GNSS_available: false
 is_path_available: false
 
 LiDAR:
@@ -12,7 +12,7 @@ LiDAR:
 IMU:
   topic: "imu_raw"
   frame_id: "imu_link"
-  pub_rate: 125.0 
+  pub_rate: 125.0
 
 GNSS:
   topic: "gnss"

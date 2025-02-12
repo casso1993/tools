@@ -15,13 +15,9 @@ PCD_pub::PCD_pub() {
 
 PCD_pub::~PCD_pub() {}
 
-void PCD_pub::publishCloud(ros::Publisher& pub, const pcl::PCLPointCloud2& cloud, const std::string& frame_id,
-                           ros::Time& time) {
-    sensor_msgs::PointCloud2 output;
-    pcl_conversions::fromPCL(cloud, output);
-    output.header.frame_id = frame_id;
-    output.header.stamp = time;
-    pub.publish(output);
+std::string PCD_pub::getFileName(const std::string& filePath) {
+    std::filesystem::path path(filePath);
+    return path.filename().string();
 }
 
 ros::Time PCD_pub::stringToROSTime(const std::string& str) {
@@ -30,60 +26,47 @@ ros::Time PCD_pub::stringToROSTime(const std::string& str) {
     return ros_time;
 }
 
-void PCD_pub::processing() {
-    ros::Rate cloud_rate(PCD_pub_rate_);
-    ThreadPool pool(8);  // 创建一个包含4个线程的线程池
-
-    // 遍历所有文件
-    for (const auto& file : files) {
-        if (!ros::ok()) {
-            LOG(WARNING) << "ROS program aborted  --PCD";
-            return;
-        }
-
-        // 将任务加入线程池
-        pool.enqueue([=]() {
-            pcl::PCLPointCloud2 cloud;
-            if (pcl::io::loadPCDFile(file, cloud) == -1) {
-                LOG(ERROR) << "Couldn't read pcd file " << file.c_str();
-                return;
-            }
-
-            std::filesystem::path absolute_path(file);
-            std::string file_name = absolute_path.stem().string();
-            ros::Time time = stringToROSTime(file_name);
-
-            LOG(INFO) << "time: " << time.sec << "." << std::setw(9) << std::setfill('0') << time.nsec;
-            publishCloud(cloud_pub, cloud, Laser_frame_id_, time);
-        });
-
-        cloud_rate.sleep();  // 控制发布频率
-
-        if (&file == &files.back()) {
-            LastElement = true;
-            LOG(WARNING) << "=================>All pcd data has been published.";
-            return;
-        }
-    }
-
-    pool.~ThreadPool();  // 等待所有任务完成
-}
-
-bool PCD_pub::pcdReader() {
+std::vector<std::pair<std::string, ros::Time>> PCD_pub::pcdReader() {
+    std::vector<std::pair<std::string, ros::Time>> filesWithTime;
+    std::vector<std::string> files;
     boost::filesystem::path dir(homeDir + PCD_files_path_ + "/pcd");
     if (!boost::filesystem::exists(dir) || !boost::filesystem::is_directory(dir)) {
         LOG(ERROR) << "The directory of the pcd file does not exist or is not a directory: "
                    << (homeDir + PCD_files_path_ + "/pcd").c_str();
-        return -1;
+        return filesWithTime;
     }
 
     for (auto& entry : boost::filesystem::directory_iterator(dir)) {
         if (entry.path().extension() == ".pcd") files.push_back(entry.path().string());
     }
+    for (auto& file : files) {
+        std::string filename = getFileName(file);
+        ros::Time time = stringToROSTime(filename);
+        filesWithTime.emplace_back(file, time);
+    }
+    // 按时间排序
+    std::sort(filesWithTime.begin(), filesWithTime.end(),
+              [](const auto& a, const auto& b) { return a.second < b.second; });
+    return filesWithTime;
+}
 
-    // Sort by timestamp in the filename
-    sort(files.begin(), files.end());
-    return true;
+void PCD_pub::publishSinglePCD(const std::string& file) {
+    pcl::PCLPointCloud2 cloud;
+    if (pcl::io::loadPCDFile(file, cloud) == -1) {
+        LOG(ERROR) << "Couldn't read pcd file " << file;
+        return;
+    }
+    ros::Time time = stringToROSTime(getFileName(file));
+    publishCloud(cloud_pub, cloud, Laser_frame_id_, time);
+}
+
+void PCD_pub::publishCloud(ros::Publisher& pub, const pcl::PCLPointCloud2& cloud, const std::string& frame_id,
+                           ros::Time& time) {
+    sensor_msgs::PointCloud2 output;
+    pcl_conversions::fromPCL(cloud, output);
+    output.header.frame_id = frame_id;
+    output.header.stamp = time;
+    pub.publish(output);
 }
 
 IMU_pub::IMU_pub() {
@@ -113,7 +96,8 @@ IMU_pub::IMU_pub() {
 
 IMU_pub::~IMU_pub() {}
 
-bool IMU_pub::readBinFile(std::vector<STR_IMU>& data) {
+std::vector<STR_IMU> IMU_pub::readBinFile() {
+    std::vector<STR_IMU> data;
     char pchBuffer[MAX_READ_LENGTH];
     int iRet = 0;
     STR_IMU* pstrTarget;
@@ -122,7 +106,7 @@ bool IMU_pub::readBinFile(std::vector<STR_IMU>& data) {
     if (NULL == pFd_imu) {
         LOG(ERROR) << "The directory of the BIN file does not exist or is not a directory: "
                    << (homeDir + IMU_file_path_ + "/IMU.bin").c_str();
-        return -1;
+        return data;
     }
     while (!feof(pFd_imu)) {
 #if 0
@@ -148,118 +132,130 @@ bool IMU_pub::readBinFile(std::vector<STR_IMU>& data) {
         data.push_back(*pstrTarget);
 #endif
     }
-    return true;
+    return data;
 }
 
-void IMU_pub::publishIMUData(const std::vector<STR_IMU>& data) {
-    ros::Rate imu_rate(IMU_pub_rate_);
-
-    for (const auto& datum : data) {
-        if (!ros::ok()) {
-            LOG(WARNING) << "ROS program aborted  --IMU";
-            return;
-        }
-
-        if (datum.ullSystemTime / 100000 > 2 * pow(10, 10)) {
-            continue;
-        }
-
-        sensor_msgs::Imu msg;
-
-        ros::Time IMU_ros_time(datum.ullSystemTime / 100000, datum.ullSystemTime % 100000 * 10000);
-        msg.header.stamp = IMU_ros_time;
-        msg.header.frame_id = IMU_frame_id_;
-
-        geometry_msgs::Quaternion quaternion =
-            tf::createQuaternionMsgFromRollPitchYaw(datum.fRollAngle, datum.fPitchAngle, datum.fHeadingAngle);
-        msg.orientation = quaternion;
-
-        msg.orientation_covariance[0] = -1;  // 表示没有方向信息
-
-        msg.angular_velocity.x = datum.fGyroX * PI / 180.0;
-        msg.angular_velocity.y = datum.fGyroY * PI / 180.0;
-        msg.angular_velocity.z = datum.fGyroZ * PI / 180.0;
-
-        msg.linear_acceleration.x = datum.fAccX;
-        msg.linear_acceleration.y = datum.fAccY;
-        msg.linear_acceleration.z = datum.fAccZ;
-
-        imu_pub.publish(msg);
-
-        if (is_gnss_available_) {
-            sensor_msgs::NavSatFix gnss_msg;
-            gnss_msg.header.stamp = IMU_ros_time;
-            gnss_msg.header.frame_id = gnss_frame_id_;
-            gnss_msg.latitude = datum.dLatitude;
-            gnss_msg.longitude = datum.dLongitude;
-            gnss_msg.altitude = datum.fAltitude;
-            gnss_msg.status.status = datum.cSystemStatus;
-            gnss_pub.publish(gnss_msg);
-        }
-
-        /* 发布的是path */
-        if (is_path_available_) {
-            geometry_msgs::PoseStamped pose;
-
-            double dt = 1 / IMU_pub_rate_;
-            vx_ += datum.fAccX * dt;
-            vy_ += datum.fAccY * dt;
-            vz_ = 0;
-            x_ += vx_ * dt;
-            y_ += vy_ * dt;
-            z_ = 0;
-
-            roll_ += datum.fGyroX * dt * PI / 180.0;
-            pitch_ += datum.fGyroY * dt * PI / 180.0;
-            yaw_ += datum.fGyroZ * dt * PI / 180.0;
-            LOG(INFO) << " yaw: " << yaw_ * 180.0 / PI;
-
-            tf::Quaternion q;
-            q.setRPY(roll_, pitch_, yaw_);
-
-            pose.header.stamp = ros::Time::now();
-            pose.header.frame_id = path_frame_id_;
-            pose.pose.position.x = x_;
-            pose.pose.position.y = y_;
-            pose.pose.position.z = z_;
-            pose.pose.orientation.x = q.x();
-            pose.pose.orientation.y = q.y();
-            pose.pose.orientation.z = q.z();
-            pose.pose.orientation.w = q.w();
-
-            path.poses.push_back(pose);
-            if (IMU_count % static_cast<int>(IMU_pub_rate_) == 0) {
-                path_pub.publish(path);
-            }
-
-            IMU_count++;
-        }
-
-        imu_rate.sleep();
-
-        if (&datum == &data.back()) {
-            LastElement = true;
-            LOG(WARNING) << "=================>All IMU data has been published.";
-            return;
-        }
+void IMU_pub::publishSingleIMU(const STR_IMU& datum) {
+    if (datum.ullSystemTime / 100000 > 2 * pow(10, 10)) {
+        return;
     }
-}
 
-void node::run() {
-    t1 = boost::thread([=]() { IMU->publishIMUData(data); });
-    t2 = boost::thread([=]() { PCD->processing(); });
+    sensor_msgs::Imu msg;
 
-    while (t1.joinable() && t2.joinable()) {
-        t1.join();
-        t2.join();
+    ros::Time IMU_ros_time(datum.ullSystemTime / 100000, datum.ullSystemTime % 100000 * 10000);
+    msg.header.stamp = IMU_ros_time;
+    msg.header.frame_id = IMU_frame_id_;
+
+    geometry_msgs::Quaternion quaternion =
+        tf::createQuaternionMsgFromRollPitchYaw(datum.fRollAngle, datum.fPitchAngle, datum.fHeadingAngle);
+    msg.orientation = quaternion;
+
+    msg.orientation_covariance[0] = -1;  // 表示没有方向信息
+
+    msg.angular_velocity.x = datum.fGyroX * PI / 180.0;
+    msg.angular_velocity.y = datum.fGyroY * PI / 180.0;
+    msg.angular_velocity.z = datum.fGyroZ * PI / 180.0;
+
+    msg.linear_acceleration.x = datum.fAccX;
+    msg.linear_acceleration.y = datum.fAccY;
+    msg.linear_acceleration.z = datum.fAccZ;
+
+    imu_pub.publish(msg);
+
+    if (is_gnss_available_) {
+        sensor_msgs::NavSatFix gnss_msg;
+        gnss_msg.header.stamp = IMU_ros_time;
+        gnss_msg.header.frame_id = gnss_frame_id_;
+        gnss_msg.latitude = datum.dLatitude;
+        gnss_msg.longitude = datum.dLongitude;
+        gnss_msg.altitude = datum.fAltitude;
+        gnss_msg.status.status = datum.cSystemStatus;
+        gnss_pub.publish(gnss_msg);
+    }
+
+    /* 发布的是path */
+    if (is_path_available_) {
+        geometry_msgs::PoseStamped pose;
+
+        double dt = 1 / IMU_pub_rate_;
+        vx_ += datum.fAccX * dt;
+        vy_ += datum.fAccY * dt;
+        vz_ = 0;
+        x_ += vx_ * dt;
+        y_ += vy_ * dt;
+        z_ = 0;
+
+        roll_ += datum.fGyroX * dt * PI / 180.0;
+        pitch_ += datum.fGyroY * dt * PI / 180.0;
+        yaw_ += datum.fGyroZ * dt * PI / 180.0;
+        LOG(INFO) << " yaw: " << yaw_ * 180.0 / PI;
+
+        tf::Quaternion q;
+        q.setRPY(roll_, pitch_, yaw_);
+
+        pose.header.stamp = ros::Time::now();
+        pose.header.frame_id = path_frame_id_;
+        pose.pose.position.x = x_;
+        pose.pose.position.y = y_;
+        pose.pose.position.z = z_;
+        pose.pose.orientation.x = q.x();
+        pose.pose.orientation.y = q.y();
+        pose.pose.orientation.z = q.z();
+        pose.pose.orientation.w = q.w();
+
+        path.poses.push_back(pose);
+        if (IMU_count % static_cast<int>(IMU_pub_rate_) == 0) {
+            path_pub.publish(path);
+        }
+
+        IMU_count++;
     }
 }
 
 void node::readFile() {
-    if (!IMU->readBinFile(data) || !PCD->pcdReader()) {
-        return;
+    auto imuData = IMU->readBinFile();
+    auto pcdFiles = PCD->pcdReader();
+
+    // 填充IMU事件
+    for (const auto& datum : imuData) {
+        TimedEvent event;
+        event.type = TimedEvent::IMU;
+        event.data = datum;
+        event.timestamp = ros::Time(datum.ullSystemTime / 100000, (datum.ullSystemTime % 100000) * 10000);
+        eventQueue.push(event);
     }
-    LOG(INFO) << "=================>Read file success.";
+
+    // 填充PCD事件
+    for (const auto& file : pcdFiles) {
+        TimedEvent event;
+        event.type = TimedEvent::PCD;
+        event.data = file.first;
+        event.timestamp = file.second;
+        eventQueue.push(event);
+    }
+}
+
+void node::run() {
+    ros::Rate rate(std::max(PCD->PCD_pub_rate_, IMU->IMU_pub_rate_));
+    while (!eventQueue.empty() && ros::ok()) {
+        TimedEvent event = eventQueue.top();
+        eventQueue.pop();
+
+        if (event.type == TimedEvent::IMU) {
+            STR_IMU imuData = std::get<STR_IMU>(event.data);
+            IMU->publishSingleIMU(imuData);
+        } else {
+            std::string pcdPath = std::get<std::string>(event.data);
+            PCD->publishSinglePCD(pcdPath);
+        }
+        LOG(INFO) << "Publishing " << (event.type == TimedEvent::IMU ? "IMU" : "PCD")
+                  << " at time: " << event.timestamp;
+
+        rate.sleep();
+    }
+
+    LOG(WARNING) << "=================>All data published.";
+    ros::shutdown();
 }
 
 int main(int argc, char** argv) {
@@ -279,12 +275,6 @@ int main(int argc, char** argv) {
 
     while (ros::ok()) {
         main_node->run();
-
-        if (main_node->getIMUStatus() || main_node->getPCDStatus()) {
-            LOG(WARNING) << ">>>>>>>>>>   End publisher node.   <<<<<<<<<<";
-            google::ShutdownGoogleLogging();
-            break;
-        }
     }
     return 0;
 }

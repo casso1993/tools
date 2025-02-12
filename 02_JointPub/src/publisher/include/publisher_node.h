@@ -23,6 +23,10 @@
 #include <vector>
 #include "glog/logging.h"
 
+#include <queue>
+#include <variant>
+
+
 using namespace std;
 
 #define FILE_NAME_LENGTH 128
@@ -89,6 +93,17 @@ typedef struct s_imu {
 
 const char *homeDir = std::getenv("HOME");
 
+struct TimedEvent {
+    ros::Time timestamp;
+    enum EventType { IMU, PCD } type;
+    std::variant<STR_IMU, std::string> data; // STR_IMU存储IMU数据，string存储PCD文件路径
+
+    bool operator<(const TimedEvent& other) const {
+        return timestamp > other.timestamp; // 优先队列按时间升序排列
+    }
+};
+
+
 class IMU_pub {
    private:
     /* -----IMU parameter----- */
@@ -96,7 +111,6 @@ class IMU_pub {
     std::string IMU_topic_;
     std::string IMU_file_path_;
     std::string IMU_frame_id_;
-    double IMU_pub_rate_;
 
     /* -----gnss parameter----- */
     ros::Publisher gnss_pub;
@@ -113,8 +127,6 @@ class IMU_pub {
     std::string path_frame_id_;
     nav_msgs::Path path;
 
-    bool LastElement = false;
-
     double x_ = 0.0, y_ = 0.0, z_ = 0.0;
     double vx_ = 0.0, vy_ = 0.0, vz_ = 0.0;
     double roll_ = 0.0, pitch_ = 0.0, yaw_ = 0.0;
@@ -123,13 +135,13 @@ class IMU_pub {
     int IMU_count = 0;
 
    public:
+    double IMU_pub_rate_;
+
     IMU_pub();
     ~IMU_pub();
 
-    bool readBinFile(std::vector<STR_IMU> &);
-    void publishIMUData(const std::vector<STR_IMU> &);
-
-    inline bool isLastElement() { return LastElement; };
+    std::vector<STR_IMU> readBinFile();
+    void publishSingleIMU(const STR_IMU& datum);
 };
 
 class PCD_pub {
@@ -141,19 +153,19 @@ class PCD_pub {
     std::string PCD_files_path_;
     std::string Laser_topic_;
     std::string Laser_frame_id_;
-    double PCD_pub_rate_;
 
-    bool LastElement = false;
     std::mutex mutex_;
 
    public:
+    double PCD_pub_rate_;
+
     PCD_pub();
     ~PCD_pub();
 
-    bool pcdReader();
-    void processing();
-    inline bool isLastElement() { return LastElement; };
+    std::vector<std::pair<std::string, ros::Time>> pcdReader();
+    void publishSinglePCD(const std::string& file);
     ros::Time stringToROSTime(const std::string &);
+    std::string getFileName(const std::string&);
 };
 
 class node {
@@ -165,6 +177,8 @@ class node {
 
     std::vector<STR_IMU> data;
 
+    std::priority_queue<TimedEvent> eventQueue;
+
    public:
     node() : IMU(std::make_unique<IMU_pub>()), PCD(std::make_unique<PCD_pub>()){};
     ~node();
@@ -172,69 +186,8 @@ class node {
     void run();
 
     void readFile();
-
-    inline bool getIMUStatus() const { return IMU->isLastElement(); }
-    inline bool getPCDStatus() const { return PCD->isLastElement(); }
 };
 
 node::~node() {}
 
-class ThreadPool {
-   public:
-    ThreadPool(size_t threads) : stop(false) {
-        for (size_t i = 0; i < threads; ++i)
-            workers.emplace_back([this] {
-                for (;;) {
-                    std::function<void()> task;
-
-                    {
-                        std::unique_lock<std::mutex> lock(this->queue_mutex);
-                        this->condition.wait(lock, [this] { return this->stop || !this->tasks.empty(); });
-                        if (this->stop && this->tasks.empty()) return;
-                        task = std::move(this->tasks.front());
-                        this->tasks.pop();
-                    }
-
-                    task();
-                }
-            });
-    }
-
-    template <class F, class... Args>
-    auto enqueue(F &&f, Args &&... args) -> std::future<typename std::result_of<F(Args...)>::type> {
-        using return_type = typename std::result_of<F(Args...)>::type;
-
-        auto task = std::make_shared<std::packaged_task<return_type()>>(
-            std::bind(std::forward<F>(f), std::forward<Args>(args)...));
-
-        std::future<return_type> res = task->get_future();
-        {
-            std::unique_lock<std::mutex> lock(queue_mutex);
-
-            // don't allow enqueueing after stopping the pool
-            if (stop) throw std::runtime_error("enqueue on stopped ThreadPool");
-
-            tasks.emplace([task]() { (*task)(); });
-        }
-        condition.notify_one();
-        return res;
-    }
-
-    ~ThreadPool() {
-        {
-            std::unique_lock<std::mutex> lock(queue_mutex);
-            stop = true;
-        }
-        condition.notify_all();
-        for (std::thread &worker : workers) worker.join();
-    }
-
-   private:
-    std::vector<std::thread> workers;
-    std::queue<std::function<void()>> tasks;
-
-    std::mutex queue_mutex;
-    std::condition_variable condition;
-    bool stop;
-};
 #endif  // PUBLISHER_NODE_H
