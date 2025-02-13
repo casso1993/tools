@@ -143,6 +143,8 @@ void pcd_publish::run() {
         LOG(WARNING) << "Saving PCD file: " << save_file;
     }
 
+    std::this_thread::sleep_for(std::chrono::seconds(2));
+
     point_cloud_pub.publish(ros_point_cloud_message);
 
     ros::spin();

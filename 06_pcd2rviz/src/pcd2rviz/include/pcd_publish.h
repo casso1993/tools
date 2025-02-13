@@ -10,6 +10,8 @@
 #include <ros/ros.h>
 #include <sensor_msgs/PointCloud2.h>
 #include "glog/logging.h"
+#include <chrono>
+#include <thread>
 
 using PointType = pcl::PointXYZI;
 using PointCloudType = pcl::PointCloud<PointType>;

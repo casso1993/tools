@@ -1,8 +1,8 @@
-load_path: "/tools/06_pcd2rviz/src/pcd2rviz/pcd/output.pcd" # 加载点云路径
-save_path: "/tools/06_pcd2rviz/src/pcd2rviz/result/output.pcd" # 保存点云路径
+load_path: "/tools/06_pcd2rviz/src/pcd2rviz/pcd/output_left.pcd" # 加载点云路径
+save_path: "/tools/06_pcd2rviz/src/pcd2rviz/result/output_left.pcd" # 保存点云路径
 
 # 半径异常值移除
-removal_available: true # 是否开启异常值移除
+removal_available: false # 是否开启异常值移除
 set_specific_height: false # 是否设置高度
 specific_height: [-2.0, 0] # 高度范围
 radius_search: 0.5 # 半径
@@ -10,11 +10,11 @@ min_neighbors: 10 # 最小邻域点数
 
 # 高度滤波
 height_filter_available: true
-max_height: 20.0
+max_height: 5.0
 
 # 降采样
 downsampling_available: true # 是否开启降采样
-downsampling_leaf_size: 0.2 # 越少越密
+downsampling_leaf_size: 0.15 # 越少越密
 
 # 保存点云
 save_pcd_en: true # 是否保存点云
