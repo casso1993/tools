@@ -103,7 +103,6 @@ struct TimedEvent {
     }
 };
 
-
 class IMU_pub {
    private:
     /* -----IMU parameter----- */
@@ -111,6 +110,7 @@ class IMU_pub {
     std::string IMU_topic_;
     std::string IMU_file_path_;
     std::string IMU_frame_id_;
+    bool standard_timestamp_;
 
     /* -----gnss parameter----- */
     ros::Publisher gnss_pub;
@@ -127,6 +127,8 @@ class IMU_pub {
     std::string path_frame_id_;
     nav_msgs::Path path;
 
+    ros::Time IMU_ros_time;
+    
     double x_ = 0.0, y_ = 0.0, z_ = 0.0;
     double vx_ = 0.0, vy_ = 0.0, vz_ = 0.0;
     double roll_ = 0.0, pitch_ = 0.0, yaw_ = 0.0;
@@ -179,8 +181,13 @@ class node {
 
     std::priority_queue<TimedEvent> eventQueue;
 
+    bool standard_timestamp_;
+
    public:
-    node() : IMU(std::make_unique<IMU_pub>()), PCD(std::make_unique<PCD_pub>()){};
+    node() : IMU(std::make_unique<IMU_pub>()), PCD(std::make_unique<PCD_pub>()){
+        ros::NodeHandle nh;
+        nh.param<bool>("IMU/standard_timestamp", standard_timestamp_, true);
+    };
     ~node();
 
     void run();

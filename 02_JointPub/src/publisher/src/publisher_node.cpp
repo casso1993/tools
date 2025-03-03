@@ -76,6 +76,7 @@ IMU_pub::IMU_pub() {
     nh.param<std::string>("IMU/topic", IMU_topic_, "imu_raw");
     nh.param<std::string>("IMU/frame_id", IMU_frame_id_, "imu_link");
     nh.param<double>("IMU/pub_rate", IMU_pub_rate_, 120.0);
+    nh.param<bool>("IMU/standard_timestamp", standard_timestamp_, true);
 
     nh.param<bool>("is_path_available", is_path_available_, false);
     nh.param<std::string>("path/topic", path_topic_, "imu_path");
@@ -136,13 +137,24 @@ std::vector<STR_IMU> IMU_pub::readBinFile() {
 }
 
 void IMU_pub::publishSingleIMU(const STR_IMU& datum) {
-    if (datum.ullSystemTime / 100000 > 2 * pow(10, 10)) {
-        return;
-    }
+
 
     sensor_msgs::Imu msg;
 
-    ros::Time IMU_ros_time(datum.ullSystemTime / 100000, datum.ullSystemTime % 100000 * 10000);
+    if (standard_timestamp_) {
+        if (datum.ullSystemTime / 100000 > 1.8 * pow(10, 9) || datum.ullSystemTime / 100000 < 1.7 * pow(10, 9)) {
+            LOG(ERROR) << "The timestamp of the IMU data is out of range: " << datum.ullSystemTime / 100000;
+            return;
+        }
+        IMU_ros_time = ros::Time(datum.ullSystemTime / 100000, datum.ullSystemTime % 100000 * 10000);
+    }
+    else{
+        if (datum.ullSystemTime / 1000 > 1.8 * pow(10, 9) || datum.ullSystemTime / 1000 < 1.7 * pow(10, 9)) {
+            LOG(ERROR) << "The timestamp of the IMU data is out of range: " << datum.ullSystemTime / 1000;
+            return;
+        }
+        IMU_ros_time = ros::Time(datum.ullSystemTime / 1000, (datum.ullSystemTime % 1000) * 1000000);
+    }
     msg.header.stamp = IMU_ros_time;
     msg.header.frame_id = IMU_frame_id_;
 
@@ -221,7 +233,12 @@ void node::readFile() {
         TimedEvent event;
         event.type = TimedEvent::IMU;
         event.data = datum;
-        event.timestamp = ros::Time(datum.ullSystemTime / 100000, (datum.ullSystemTime % 100000) * 10000);
+        if (standard_timestamp_) {
+            event.timestamp = ros::Time(datum.ullSystemTime / 100000, datum.ullSystemTime % 100000 * 10000);
+        }
+        else{
+            event.timestamp = ros::Time(datum.ullSystemTime / 1000, (datum.ullSystemTime % 1000) * 1000000);
+        }
         eventQueue.push(event);
     }
 
