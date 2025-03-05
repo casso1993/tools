@@ -1,1 +1,3 @@
 output_type: 3 # 1: 过滤出厘米级RTK数据, 2: 打印全部RTK数据, 3：打印IMU数据 4: 标定使用数据
+bin_path: "../imu_bin/IMU.bin"
+result_path: "../txt/imu.txt"

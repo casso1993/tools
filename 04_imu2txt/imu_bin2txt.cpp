@@ -87,19 +87,25 @@ int main(int argc, char **argv) {
 
     const YAML::Node config = YAML::LoadFile("../config/config.yaml");
     int output_type_ = config["output_type"].as<int>();
+    std::string bin_path_ = config["bin_path"].as<std::string>();
+    std::string result_path_ = config["result_path"].as<std::string>();
 
-    if (argc < 3) {
-        LOG(ERROR) << "usage: imu_bin2txt bin_file txt_file" << endl;
-        return -1;
-    }
+    // if (argc < 3) {
+    //     LOG(ERROR) << "usage: imu_bin2txt bin_file txt_file" << endl;
+    //     return -1;
+    // }
     char pchBuffer[MAX_READ_LENGTH];
     int iRet = 0;
     STR_IMU *pstrTarget;
     int iDataLength = sizeof(STR_IMU);
-    std::string strFilePath(argv[1]);
-    std::string strTxtPath(argv[2]);
-    FILE *pFd_imu = fopen(strFilePath.c_str(), "rb");
-    FILE *pSaveFile = fopen(strTxtPath.c_str(), "w");
+    // std::string strFilePath(argv[1]);
+    // std::string strTxtPath(argv[2]);
+    // FILE *pFd_imu = fopen(strFilePath.c_str(), "rb");
+    // FILE *pSaveFile = fopen(strTxtPath.c_str(), "w");
+
+    FILE *pFd_imu = fopen(bin_path_.c_str(), "rb");
+    FILE *pSaveFile = fopen(result_path_.c_str(), "w");
+
     if (NULL == pFd_imu || NULL == pSaveFile) {
         LOG(ERROR) << "=====> Cannot Open file " << endl;
         return -1;

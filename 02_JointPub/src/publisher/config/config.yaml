@@ -1,5 +1,5 @@
-PCD_files_path: "/Documents/robosense_data/test"
-IMU_file_path: "/Documents/robosense_data/test"
+PCD_files_path: "/Documents/robosense_data/baoguang"
+IMU_file_path: "/Documents/robosense_data/baoguang"
 
 is_GNSS_available: false
 is_path_available: false

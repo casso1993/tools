@@ -1,5 +1,5 @@
-load_path: "/tools/01_groundFilter/pcd/output_left.pcd"
-save_path: "/tools/01_groundFilter/result/output_left.pcd"
+load_path: "/tools/01_groundFilter/pcd/output.pcd"
+save_path: "/tools/01_groundFilter/result/output.pcd"
 num_threads: 16          # 多线程
 
 # APMF参数
