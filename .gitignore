@@ -17,5 +17,4 @@ devel/
 *.bag
 
 # 忽略imu数据
-imu.txt
-imu.csv
+txt/*
