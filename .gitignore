@@ -15,3 +15,7 @@ devel/
 
 # 忽略 bag 文件
 *.bag
+
+# 忽略imu数据
+imu.txt
+imu.csv
