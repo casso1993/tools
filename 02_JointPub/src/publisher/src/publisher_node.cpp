@@ -50,6 +50,7 @@ std::vector<std::pair<std::string, ros::Time>> PCD_pub::pcdReader() {
     return filesWithTime;
 }
 
+/** 原来的实现方法
 void PCD_pub::publishSinglePCD(const std::string& file) {
     pcl::PCLPointCloud2 cloud;
     if (pcl::io::loadPCDFile(file, cloud) == -1) {
@@ -68,6 +69,160 @@ void PCD_pub::publishCloud(ros::Publisher& pub, const pcl::PCLPointCloud2& cloud
     output.header.stamp = time;
     pub.publish(output);
 }
+*/
+
+/** 修改后的实现方法,失败 
+void PCD_pub::publishSinglePCD(const std::string& pcd_path) {
+    std::ifstream ifs(pcd_path);
+    if (!ifs.is_open()) {
+        LOG(ERROR) << "Failed to open file: " << pcd_path;
+        return;
+    }
+    std::string line;
+    // 读取并忽略头部信息
+    for (int i = 0; i < 11; ++i) {  // 跳过前11行的头信息
+        if (!std::getline(ifs, line)) {
+            LOG(ERROR) << "Invalid PCD file format";
+            return;
+        }
+    }
+
+    PointCloudMsg cloud;
+    cloud.points.clear();  // 清空可能已有的点云数据
+
+    // 开始处理点数据
+    while (std::getline(ifs, line)) {
+        std::istringstream iss(line);
+        PointXYZIRT point;
+        if (!(iss >> point.x >> point.y >> point.z >> point.intensity >> point.ring >> point.timestamp)) {
+            LOG(ERROR) << "Error reading point data";
+            continue;
+        }
+        cloud.points.push_back(point);
+    }
+    cloud_pub.publish(toRosMsg(cloud, Laser_frame_id_));
+    std::cout << "9" << std::endl;
+}
+
+inline sensor_msgs::PointCloud2 PCD_pub::toRosMsg(const PointCloudMsg& rs_msg, const std::string& frame_id) {
+    sensor_msgs::PointCloud2 ros_msg;
+
+    int fields = 6;
+    ros_msg.fields.clear();
+    ros_msg.fields.reserve(fields);
+
+    ros_msg.width = rs_msg.height;  // exchange width and height to be compatible with pcl::PointCloud<>
+    ros_msg.height = rs_msg.width;
+
+    int offset = 0;
+    offset = addPointField(ros_msg, "x", 1, sensor_msgs::PointField::FLOAT32, offset);
+    offset = addPointField(ros_msg, "y", 1, sensor_msgs::PointField::FLOAT32, offset);
+    offset = addPointField(ros_msg, "z", 1, sensor_msgs::PointField::FLOAT32, offset);
+    offset = addPointField(ros_msg, "intensity", 1, sensor_msgs::PointField::FLOAT32, offset);
+    offset = addPointField(ros_msg, "ring", 1, sensor_msgs::PointField::UINT16, offset);
+    offset = addPointField(ros_msg, "timestamp", 1, sensor_msgs::PointField::FLOAT64, offset);
+
+    ros_msg.point_step = offset;
+    ros_msg.row_step = ros_msg.width * ros_msg.point_step;
+    ros_msg.is_dense = rs_msg.is_dense;
+    ros_msg.data.resize(ros_msg.point_step * ros_msg.width * ros_msg.height);
+
+    sensor_msgs::PointCloud2Iterator<float> iter_x_(ros_msg, "x");
+    sensor_msgs::PointCloud2Iterator<float> iter_y_(ros_msg, "y");
+    sensor_msgs::PointCloud2Iterator<float> iter_z_(ros_msg, "z");
+    sensor_msgs::PointCloud2Iterator<float> iter_intensity_(ros_msg, "intensity");
+    sensor_msgs::PointCloud2Iterator<uint16_t> iter_ring_(ros_msg, "ring");
+    sensor_msgs::PointCloud2Iterator<double> iter_timestamp_(ros_msg, "timestamp");
+
+    std::cout << "4" << std::endl;
+
+    for (size_t i = 0; i < rs_msg.points.size();
+         ++i, ++iter_x_, ++iter_y_, ++iter_z_, ++iter_intensity_, ++iter_ring_, ++iter_timestamp_) {
+        const PointXYZIRT& point_ = rs_msg.points[i];
+
+        // std::cout << "x: " << point.x << std::endl;
+        // std::cout << "y: " << point.y << std::endl;
+        // std::cout << "z: " << point.z << std::endl;
+        // std::cout << "i: " << point.intensity << std::endl;
+        // std::cout << "r: " << point.ring << std::endl;
+        // std::cout << "t: " << point.timestamp << std::endl;
+
+        std::cout << "*iter_x_: " << *iter_x_ << std::endl;
+
+        *iter_x_ = point_.x;
+        *iter_y_ = point_.y;
+        *iter_z_ = point_.z;
+        *iter_intensity_ = point_.intensity;
+        *iter_ring_ = point_.ring;
+        *iter_timestamp_ = point_.timestamp;
+    }
+
+    ros_msg.header.seq = rs_msg.seq;
+    ros_msg.header.stamp = ros_msg.header.stamp.fromSec(rs_msg.timestamp);
+    ros_msg.header.frame_id = frame_id;
+    std::cout << "8" << std::endl;
+    return ros_msg;
+}
+
+// void PCD_pub::publishCloud(ros::Publisher& pub, const PointXYZIRT& cloud, const std::string& frame_id,
+//                            ros::Time& time) {
+//     sensor_msgs::PointCloud2 output;
+//     pcl_conversions::fromPCL(cloud, output);
+//     output.header.frame_id = frame_id;
+//     output.header.stamp = time;
+//     pub.publish(output);
+// }
+*/
+
+void PCD_pub::publishSinglePCD(const std::string& pcd_path) {
+    // 加载PCD文件
+    pcl::PointCloud<PointXYZIRT>::Ptr cloud(new pcl::PointCloud<PointXYZIRT>);
+    if (pcl::io::loadPCDFile<PointXYZIRT>(pcd_path, *cloud) == -1) {
+        ROS_ERROR_STREAM("Failed to load PCD file: " << pcd_path);
+        return;
+    }
+
+    // 转换为ROS消息
+    sensor_msgs::PointCloud2 msg;
+    pcl::toROSMsg(*cloud, msg);
+    msg.header.stamp = ros::Time::now();
+    msg.header.frame_id = Laser_frame_id_;
+
+    // 手动修正字段描述（PCL转换可能不保留原始顺序）
+    msg.fields.clear();
+    
+    sensor_msgs::PointField field;
+    field.name = "x"; field.offset = 0; 
+    field.datatype = sensor_msgs::PointField::FLOAT32; field.count = 1;
+    msg.fields.push_back(field);
+    
+    field.name = "y"; field.offset = 4;
+    msg.fields.push_back(field);
+    
+    field.name = "z"; field.offset = 8;
+    msg.fields.push_back(field);
+    
+    field.name = "intensity"; field.offset = 12;
+    field.datatype = sensor_msgs::PointField::UINT8;
+    msg.fields.push_back(field);
+    
+    field.name = "ring"; field.offset = 13;
+    field.datatype = sensor_msgs::PointField::UINT16;
+    msg.fields.push_back(field);
+    
+    field.name = "timestamp"; field.offset = 15;
+    field.datatype = sensor_msgs::PointField::FLOAT64;
+    msg.fields.push_back(field);
+
+    // 设置点云参数
+    msg.point_step = sizeof(PointXYZIRT);
+    msg.row_step = msg.point_step * msg.width;
+    msg.is_dense = false;
+
+    ros::Time time = stringToROSTime(getFileName(pcd_path));
+    msg.header.stamp = time;
+    cloud_pub.publish(msg);
+}
 
 IMU_pub::IMU_pub() {
     ros::NodeHandle nh;
@@ -76,7 +231,6 @@ IMU_pub::IMU_pub() {
     nh.param<std::string>("IMU/topic", IMU_topic_, "imu_raw");
     nh.param<std::string>("IMU/frame_id", IMU_frame_id_, "imu_link");
     nh.param<double>("IMU/pub_rate", IMU_pub_rate_, 120.0);
-    nh.param<bool>("IMU/standard_timestamp", standard_timestamp_, true);
 
     nh.param<bool>("is_path_available", is_path_available_, false);
     nh.param<std::string>("path/topic", path_topic_, "imu_path");
@@ -137,24 +291,13 @@ std::vector<STR_IMU> IMU_pub::readBinFile() {
 }
 
 void IMU_pub::publishSingleIMU(const STR_IMU& datum) {
-
+    if (datum.ullSystemTime / 100000 > 2 * pow(10, 10)) {
+        return;
+    }
 
     sensor_msgs::Imu msg;
 
-    if (standard_timestamp_) {
-        if (datum.ullSystemTime / 100000 > 1.8 * pow(10, 9) || datum.ullSystemTime / 100000 < 1.7 * pow(10, 9)) {
-            LOG(ERROR) << "The timestamp of the IMU data is out of range: " << datum.ullSystemTime / 100000;
-            return;
-        }
-        IMU_ros_time = ros::Time(datum.ullSystemTime / 100000, datum.ullSystemTime % 100000 * 10000);
-    }
-    else{
-        if (datum.ullSystemTime / 1000 > 1.8 * pow(10, 9) || datum.ullSystemTime / 1000 < 1.7 * pow(10, 9)) {
-            LOG(ERROR) << "The timestamp of the IMU data is out of range: " << datum.ullSystemTime / 1000;
-            return;
-        }
-        IMU_ros_time = ros::Time(datum.ullSystemTime / 1000, (datum.ullSystemTime % 1000) * 1000000);
-    }
+    ros::Time IMU_ros_time(datum.ullSystemTime / 100000, datum.ullSystemTime % 100000 * 10000);
     msg.header.stamp = IMU_ros_time;
     msg.header.frame_id = IMU_frame_id_;
 
@@ -233,12 +376,7 @@ void node::readFile() {
         TimedEvent event;
         event.type = TimedEvent::IMU;
         event.data = datum;
-        if (standard_timestamp_) {
-            event.timestamp = ros::Time(datum.ullSystemTime / 100000, datum.ullSystemTime % 100000 * 10000);
-        }
-        else{
-            event.timestamp = ros::Time(datum.ullSystemTime / 1000, (datum.ullSystemTime % 1000) * 1000000);
-        }
+        event.timestamp = ros::Time(datum.ullSystemTime / 100000, (datum.ullSystemTime % 100000) * 10000);
         eventQueue.push(event);
     }
 

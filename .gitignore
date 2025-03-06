@@ -17,5 +17,5 @@ devel/
 *.bag
 
 # 忽略imu数据
-/txt/*
-!/txt/.gitkeep
+/04_imu2txt/txt/*
+!/04_imu2txt/txt/

@@ -1,5 +1,5 @@
-PCD_files_path: "/Documents/robosense_data/baoguang"
-IMU_file_path: "/Documents/robosense_data/baoguang"
+PCD_files_path: "/Documents/RoboSenseData/foshan_back"
+IMU_file_path: "/Documents/RoboSenseData/foshan_back"
 
 is_GNSS_available: false
 is_path_available: false
@@ -13,7 +13,6 @@ IMU:
   topic: "imu_raw"
   frame_id: "imu_link"
   pub_rate: 125.0
-  standard_timestamp: true
 
 GNSS:
   topic: "gnss"

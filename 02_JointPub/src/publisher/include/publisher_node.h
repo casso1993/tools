@@ -26,6 +26,7 @@
 #include <queue>
 #include <variant>
 
+#include <sensor_msgs/point_cloud2_iterator.h>
 
 using namespace std;
 
@@ -91,15 +92,55 @@ typedef struct s_imu {
 #endif
 #pragma pack(pop)
 
+#pragma pack(push, 1)
+struct PointXYZIRT {
+    float x;
+    float y;
+    float z;
+    uint8_t intensity;
+    uint16_t ring;
+    double timestamp;
+};
+#pragma pack(pop)
+
+POINT_CLOUD_REGISTER_POINT_STRUCT(PointXYZIRT,
+    (float, x, x)
+    (float, y, y)
+    (float, z, z)
+    (uint8_t, intensity, intensity)
+    (uint16_t, ring, ring)
+    (double, timestamp, timestamp)
+)
+
+// template <typename T_Point>
+// class PointCloudT
+// {
+// public:
+//   typedef T_Point PointT;
+//   typedef std::vector<PointT> VectorT;
+
+//   uint32_t height = 0;    ///< Height of point cloud
+//   uint32_t width = 0;     ///< Width of point cloud
+//   bool is_dense = false;  ///< If is_dense is true, the point cloud does not contain NAN points,
+//   double timestamp = 0.0;
+//   uint32_t seq = 0;           ///< Sequence number of message
+//   std::string frame_id = "";  ///< Point cloud frame id
+
+//   VectorT points;
+// };
+
+
+// typedef PointCloudT<PointXYZIRT> PointCloudMsg;
+
 const char *homeDir = std::getenv("HOME");
 
 struct TimedEvent {
     ros::Time timestamp;
     enum EventType { IMU, PCD } type;
-    std::variant<STR_IMU, std::string> data; // STR_IMU存储IMU数据，string存储PCD文件路径
+    std::variant<STR_IMU, std::string> data;  // STR_IMU存储IMU数据，string存储PCD文件路径
 
-    bool operator<(const TimedEvent& other) const {
-        return timestamp > other.timestamp; // 优先队列按时间升序排列
+    bool operator<(const TimedEvent &other) const {
+        return timestamp > other.timestamp;  // 优先队列按时间升序排列
     }
 };
 
@@ -110,7 +151,6 @@ class IMU_pub {
     std::string IMU_topic_;
     std::string IMU_file_path_;
     std::string IMU_frame_id_;
-    bool standard_timestamp_;
 
     /* -----gnss parameter----- */
     ros::Publisher gnss_pub;
@@ -127,8 +167,6 @@ class IMU_pub {
     std::string path_frame_id_;
     nav_msgs::Path path;
 
-    ros::Time IMU_ros_time;
-    
     double x_ = 0.0, y_ = 0.0, z_ = 0.0;
     double vx_ = 0.0, vy_ = 0.0, vz_ = 0.0;
     double roll_ = 0.0, pitch_ = 0.0, yaw_ = 0.0;
@@ -143,7 +181,7 @@ class IMU_pub {
     ~IMU_pub();
 
     std::vector<STR_IMU> readBinFile();
-    void publishSingleIMU(const STR_IMU& datum);
+    void publishSingleIMU(const STR_IMU &datum);
 };
 
 class PCD_pub {
@@ -165,9 +203,10 @@ class PCD_pub {
     ~PCD_pub();
 
     std::vector<std::pair<std::string, ros::Time>> pcdReader();
-    void publishSinglePCD(const std::string& file);
+    void publishSinglePCD(const std::string& );
+    // inline sensor_msgs::PointCloud2 toRosMsg(const PointCloudMsg&, const std::string&);
     ros::Time stringToROSTime(const std::string &);
-    std::string getFileName(const std::string&);
+    std::string getFileName(const std::string &);
 };
 
 class node {
@@ -181,13 +220,8 @@ class node {
 
     std::priority_queue<TimedEvent> eventQueue;
 
-    bool standard_timestamp_;
-
    public:
-    node() : IMU(std::make_unique<IMU_pub>()), PCD(std::make_unique<PCD_pub>()){
-        ros::NodeHandle nh;
-        nh.param<bool>("IMU/standard_timestamp", standard_timestamp_, true);
-    };
+    node() : IMU(std::make_unique<IMU_pub>()), PCD(std::make_unique<PCD_pub>()){};
     ~node();
 
     void run();
