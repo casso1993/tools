@@ -1,0 +1,12 @@
+<launch>
+    <arg name="rviz" default="true" />
+
+    <rosparam command="load" file="$(find pcd2rviz)/config/config.yaml" />
+
+    <node pkg="pcd2rviz" type="pcd_publisher" name="pcd_publisher" output="screen" />
+
+    <group if="$(arg rviz)">
+        <node pkg="rviz" type="rviz" name="rviz" args="-d $(find pcd2rviz)/config/pcd2rviz.rviz" />
+    </group>
+
+</launch>

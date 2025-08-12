@@ -1,0 +1,18 @@
+[0.009s] Invoking command in '/home/casso/tools/06_pcd2rviz2/build/pcd2rviz': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/casso/tools/06_pcd2rviz2/build/pcd2rviz -- -j16 -l16
+[0.048s] [35m[1mConsolidate compiler generated dependencies of target pcd_publisher[0m
+[0.076s] [ 50%] [32mBuilding CXX object CMakeFiles/pcd_publisher.dir/src/pcd_publish.cpp.o[0m
+[4.200s] [01m[K/home/casso/tools/06_pcd2rviz2/src/pcd2rviz/src/pcd_publish.cpp:[m[K In function ‘[01m[Kint main(int, char**)[m[K’:
+[4.200s] [01m[K/home/casso/tools/06_pcd2rviz2/src/pcd2rviz/src/pcd_publish.cpp:15:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kgoogle[m[K’ has not been declared
+[4.200s]    15 |     [01;31m[Kgoogle[m[K::ShutdownGoogleLogging();
+[4.200s]       |     [01;31m[K^~~~~~[m[K
+[4.222s] [01m[K/home/casso/tools/06_pcd2rviz2/src/pcd2rviz/src/pcd_publish.cpp:[m[K In member function ‘[01m[Kvoid pcd_publish::run()[m[K’:
+[4.222s] [01m[K/home/casso/tools/06_pcd2rviz2/src/pcd2rviz/src/pcd_publish.cpp:134:9:[m[K [01;31m[Kerror: [m[K‘[01m[KINFO[m[K’ was not declared in this scope
+[4.222s]   134 |     LOG([01;31m[KINFO[m[K) << "Loaded point cloud with " << point_cloud->size() << " points.";
+[4.222s]       |         [01;31m[K^~~~[m[K
+[4.227s] [01m[K/home/casso/tools/06_pcd2rviz2/src/pcd2rviz/src/pcd_publish.cpp:134:5:[m[K [01;31m[Kerror: [m[K‘[01m[KLOG[m[K’ was not declared in this scope
+[4.227s]   134 |     [01;31m[KLOG[m[K(INFO) << "Loaded point cloud with " << point_cloud->size() << " points.";
+[4.227s]       |     [01;31m[K^~~[m[K
+[5.281s] gmake[2]: *** [CMakeFiles/pcd_publisher.dir/build.make:76: CMakeFiles/pcd_publisher.dir/src/pcd_publish.cpp.o] Error 1
+[5.281s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/pcd_publisher.dir/all] Error 2
+[5.282s] gmake: *** [Makefile:146: all] Error 2
+[5.284s] Invoked command in '/home/casso/tools/06_pcd2rviz2/build/pcd2rviz' returned '2': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/casso/tools/06_pcd2rviz2/build/pcd2rviz -- -j16 -l16

@@ -96,6 +96,7 @@ int main(int argc, char **argv) {
     // }
     char pchBuffer[MAX_READ_LENGTH];
     int iRet = 0;
+    bool is_first = true;
     STR_IMU *pstrTarget;
     int iDataLength = sizeof(STR_IMU);
     // std::string strFilePath(argv[1]);
@@ -189,6 +190,15 @@ int main(int argc, char **argv) {
                 break;
 
             case 4:
+                if (is_first) {
+                    fprintf(pSaveFile, "timestamp, ax, ay, az, gx, gy, gz, lon, lat, alt\n");
+                    is_first = false;
+                }
+                fprintf(pSaveFile, "%.3f,%f,%f,%f,%f,%f,%f,%.10f,%.10f,%f\n", ulltime / 1000.0, fAccX, fAccY, fAccZ,
+                        fGyroX, fGyroY, fGyroZ, lon, lat, alti);
+                break;
+
+            case 5:
                 if (!column_name) {
                     fprintf(pSaveFile, "gps_time,x,y,z,ve(m/s),vn(m/s),vu(m/s),roll(rad),pitch(rad),yaw(rad)\n");
                     column_name = true;

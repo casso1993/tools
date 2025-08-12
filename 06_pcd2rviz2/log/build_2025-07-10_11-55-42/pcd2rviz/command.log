@@ -1,0 +1,4 @@
+Invoking command in '/home/casso/tools/06_pcd2rviz2/build/pcd2rviz': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/casso/tools/06_pcd2rviz2/build/pcd2rviz -- -j16 -l16
+Invoked command in '/home/casso/tools/06_pcd2rviz2/build/pcd2rviz' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/casso/tools/06_pcd2rviz2/build/pcd2rviz -- -j16 -l16
+Invoking command in '/home/casso/tools/06_pcd2rviz2/build/pcd2rviz': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/casso/tools/06_pcd2rviz2/build/pcd2rviz
+Invoked command in '/home/casso/tools/06_pcd2rviz2/build/pcd2rviz' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/casso/tools/06_pcd2rviz2/build/pcd2rviz

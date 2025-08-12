@@ -1,0 +1,16 @@
+[35m[1mConsolidate compiler generated dependencies of target pcd_publisher[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/pcd_publisher.dir/src/pcd_publish.cpp.o[0m
+[01m[K/home/casso/tools/06_pcd2rviz2/src/pcd2rviz/src/pcd_publish.cpp:[m[K In function ‘[01m[Kint main(int, char**)[m[K’:
+[01m[K/home/casso/tools/06_pcd2rviz2/src/pcd2rviz/src/pcd_publish.cpp:15:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kgoogle[m[K’ has not been declared
+   15 |     [01;31m[Kgoogle[m[K::ShutdownGoogleLogging();
+      |     [01;31m[K^~~~~~[m[K
+[01m[K/home/casso/tools/06_pcd2rviz2/src/pcd2rviz/src/pcd_publish.cpp:[m[K In member function ‘[01m[Kvoid pcd_publish::run()[m[K’:
+[01m[K/home/casso/tools/06_pcd2rviz2/src/pcd2rviz/src/pcd_publish.cpp:134:9:[m[K [01;31m[Kerror: [m[K‘[01m[KINFO[m[K’ was not declared in this scope
+  134 |     LOG([01;31m[KINFO[m[K) << "Loaded point cloud with " << point_cloud->size() << " points.";
+      |         [01;31m[K^~~~[m[K
+[01m[K/home/casso/tools/06_pcd2rviz2/src/pcd2rviz/src/pcd_publish.cpp:134:5:[m[K [01;31m[Kerror: [m[K‘[01m[KLOG[m[K’ was not declared in this scope
+  134 |     [01;31m[KLOG[m[K(INFO) << "Loaded point cloud with " << point_cloud->size() << " points.";
+      |     [01;31m[K^~~[m[K
+gmake[2]: *** [CMakeFiles/pcd_publisher.dir/build.make:76: CMakeFiles/pcd_publisher.dir/src/pcd_publish.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/pcd_publisher.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

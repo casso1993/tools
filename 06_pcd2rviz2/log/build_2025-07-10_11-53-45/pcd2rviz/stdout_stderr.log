@@ -1,0 +1,22 @@
+[35m[1mConsolidate compiler generated dependencies of target pcd_publisher[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/pcd_publisher.dir/src/pcd_publish.cpp.o[0m
+[100%] [32m[1mLinking CXX executable pcd_publisher[0m
+[100%] Built target pcd_publisher
+-- Install configuration: ""
+-- Installing: /home/casso/tools/06_pcd2rviz2/install/pcd2rviz/lib/pcd2rviz/pcd_publisher
+-- Set runtime path of "/home/casso/tools/06_pcd2rviz2/install/pcd2rviz/lib/pcd2rviz/pcd_publisher" to ""
+-- Installing: /home/casso/tools/06_pcd2rviz2/install/pcd2rviz/share/ament_index/resource_index/package_run_dependencies/pcd2rviz
+-- Installing: /home/casso/tools/06_pcd2rviz2/install/pcd2rviz/share/ament_index/resource_index/parent_prefix_path/pcd2rviz
+-- Installing: /home/casso/tools/06_pcd2rviz2/install/pcd2rviz/share/pcd2rviz/environment/ament_prefix_path.sh
+-- Installing: /home/casso/tools/06_pcd2rviz2/install/pcd2rviz/share/pcd2rviz/environment/ament_prefix_path.dsv
+-- Installing: /home/casso/tools/06_pcd2rviz2/install/pcd2rviz/share/pcd2rviz/environment/path.sh
+-- Installing: /home/casso/tools/06_pcd2rviz2/install/pcd2rviz/share/pcd2rviz/environment/path.dsv
+-- Installing: /home/casso/tools/06_pcd2rviz2/install/pcd2rviz/share/pcd2rviz/local_setup.bash
+-- Installing: /home/casso/tools/06_pcd2rviz2/install/pcd2rviz/share/pcd2rviz/local_setup.sh
+-- Installing: /home/casso/tools/06_pcd2rviz2/install/pcd2rviz/share/pcd2rviz/local_setup.zsh
+-- Installing: /home/casso/tools/06_pcd2rviz2/install/pcd2rviz/share/pcd2rviz/local_setup.dsv
+-- Installing: /home/casso/tools/06_pcd2rviz2/install/pcd2rviz/share/pcd2rviz/package.dsv
+-- Installing: /home/casso/tools/06_pcd2rviz2/install/pcd2rviz/share/ament_index/resource_index/packages/pcd2rviz
+-- Installing: /home/casso/tools/06_pcd2rviz2/install/pcd2rviz/share/pcd2rviz/cmake/pcd2rvizConfig.cmake
+-- Installing: /home/casso/tools/06_pcd2rviz2/install/pcd2rviz/share/pcd2rviz/cmake/pcd2rvizConfig-version.cmake
+-- Installing: /home/casso/tools/06_pcd2rviz2/install/pcd2rviz/share/pcd2rviz/package.xml

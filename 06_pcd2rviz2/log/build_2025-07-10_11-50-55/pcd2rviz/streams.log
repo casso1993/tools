@@ -1,0 +1,143 @@
+[0.008s] Invoking command in '/home/casso/tools/06_pcd2rviz2/build/pcd2rviz': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/casso/tools/06_pcd2rviz2/src/pcd2rviz -DCMAKE_INSTALL_PREFIX=/home/casso/tools/06_pcd2rviz2/install/pcd2rviz
+[0.053s] -- The C compiler identification is GNU 11.4.0
+[0.099s] -- The CXX compiler identification is GNU 11.4.0
+[0.105s] -- Detecting C compiler ABI info
+[0.166s] -- Detecting C compiler ABI info - done
+[0.171s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.171s] -- Detecting C compile features
+[0.172s] -- Detecting C compile features - done
+[0.174s] -- Detecting CXX compiler ABI info
+[0.242s] -- Detecting CXX compiler ABI info - done
+[0.247s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.248s] -- Detecting CXX compile features
+[0.248s] -- Detecting CXX compile features - done
+[0.250s] -- Found ament_cmake: 1.3.11 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.370s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[0.440s] -- Found rclcpp: 16.0.12 (/opt/ros/humble/share/rclcpp/cmake)
+[0.470s] -- Found rosidl_generator_c: 3.1.6 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.473s] -- Found rosidl_adapter: 3.1.6 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.479s] -- Found rosidl_generator_cpp: 3.1.6 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[0.488s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.499s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.531s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[0.533s] -- Found rmw_fastrtps_cpp: 6.2.7 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[0.607s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  
+[0.629s] -- Found FastRTPS: /opt/ros/humble/include  
+[0.664s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[0.669s] -- Looking for pthread.h
+[0.736s] -- Looking for pthread.h - found
+[0.737s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[0.800s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+[0.801s] -- Found Threads: TRUE  
+[0.840s] -- Found sensor_msgs: 4.9.0 (/opt/ros/humble/share/sensor_msgs/cmake)
+[0.864s] -- Found pcl_conversions: 2.4.5 (/opt/ros/humble/share/pcl_conversions/cmake)
+[0.894s] -- Checking for module 'eigen3'
+[0.905s] --   Found eigen3, version 3.4.0
+[0.934s] -- Found Eigen: /usr/include/eigen3 (Required is at least version "3.1") 
+[0.934s] -- Eigen found (include: /usr/include/eigen3, version: 3.4.0)
+[0.962s] -- Checking for module 'flann'
+[0.973s] --   Found flann, version 1.9.1
+[1.008s] -- Found FLANN: /usr/lib/x86_64-linux-gnu/libflann_cpp.so  
+[1.008s] -- FLANN found (include: /usr/include, lib: /usr/lib/x86_64-linux-gnu/libflann_cpp.so)
+[1.806s] -- Checking for module 'libusb-1.0'
+[1.818s] --   Found libusb-1.0, version 1.0.25
+[1.852s] -- Found libusb: /usr/lib/x86_64-linux-gnu/libusb-1.0.so  
+[1.852s] -- OpenNI found (version: 1.5.4.0, include: /usr/include/ni, lib: /usr/lib/libOpenNI.so;libusb::libusb)
+[1.906s] -- OpenNI2 found (version: 2.2.0.33, include: /usr/include/openni2, lib: /usr/lib/x86_64-linux-gnu/libOpenNI2.so;libusb::libusb)
+[2.028s] -- Eigen found (include: /usr/include/eigen3, version: 3.4.0)
+[2.034s] -- OpenNI found (version: 1.5.4.0, include: /usr/include/ni, lib: /usr/lib/libOpenNI.so;libusb::libusb)
+[2.039s] -- OpenNI2 found (version: 2.2.0.33, include: /usr/include/openni2, lib: /usr/lib/x86_64-linux-gnu/libOpenNI2.so;libusb::libusb)
+[2.153s] -- Found Qhull version 8.0.2
+[2.273s] -- OpenNI found (version: 1.5.4.0, include: /usr/include/ni, lib: /usr/lib/libOpenNI.so;libusb::libusb)
+[2.388s] -- Found PCL_COMMON: /usr/lib/x86_64-linux-gnu/libpcl_common.so  
+[2.389s] -- Found PCL_KDTREE: /usr/lib/x86_64-linux-gnu/libpcl_kdtree.so  
+[2.389s] -- Found PCL_OCTREE: /usr/lib/x86_64-linux-gnu/libpcl_octree.so  
+[2.390s] -- Found PCL_SEARCH: /usr/lib/x86_64-linux-gnu/libpcl_search.so  
+[2.391s] -- Found PCL_SAMPLE_CONSENSUS: /usr/lib/x86_64-linux-gnu/libpcl_sample_consensus.so  
+[2.391s] -- Found PCL_FILTERS: /usr/lib/x86_64-linux-gnu/libpcl_filters.so  
+[2.391s] -- Found PCL_2D: /usr/include/pcl-1.12  
+[2.392s] -- Found PCL_GEOMETRY: /usr/include/pcl-1.12  
+[2.392s] -- Found PCL_IO: /usr/lib/x86_64-linux-gnu/libpcl_io.so  
+[2.393s] -- Found PCL_FEATURES: /usr/lib/x86_64-linux-gnu/libpcl_features.so  
+[2.394s] -- Found PCL_ML: /usr/lib/x86_64-linux-gnu/libpcl_ml.so  
+[2.394s] -- Found PCL_SEGMENTATION: /usr/lib/x86_64-linux-gnu/libpcl_segmentation.so  
+[2.395s] -- Found PCL_VISUALIZATION: /usr/lib/x86_64-linux-gnu/libpcl_visualization.so  
+[2.396s] -- Found PCL_SURFACE: /usr/lib/x86_64-linux-gnu/libpcl_surface.so  
+[2.396s] -- Found PCL_REGISTRATION: /usr/lib/x86_64-linux-gnu/libpcl_registration.so  
+[2.397s] -- Found PCL_KEYPOINTS: /usr/lib/x86_64-linux-gnu/libpcl_keypoints.so  
+[2.398s] -- Found PCL_TRACKING: /usr/lib/x86_64-linux-gnu/libpcl_tracking.so  
+[2.398s] -- Found PCL_RECOGNITION: /usr/lib/x86_64-linux-gnu/libpcl_recognition.so  
+[2.399s] -- Found PCL_STEREO: /usr/lib/x86_64-linux-gnu/libpcl_stereo.so  
+[2.400s] -- Found PCL_APPS: /usr/lib/x86_64-linux-gnu/libpcl_apps.so  
+[2.400s] -- Found PCL_IN_HAND_SCANNER: /usr/include/pcl-1.12  
+[2.400s] -- Found PCL_MODELER: /usr/include/pcl-1.12  
+[2.401s] -- Found PCL_POINT_CLOUD_EDITOR: /usr/include/pcl-1.12  
+[2.401s] -- Found PCL_OUTOFCORE: /usr/lib/x86_64-linux-gnu/libpcl_outofcore.so  
+[2.402s] -- Found PCL_PEOPLE: /usr/lib/x86_64-linux-gnu/libpcl_people.so  
+[2.404s] -- Found pcl_ros: 2.4.5 (/opt/ros/humble/share/pcl_ros/cmake)
+[2.429s] -- Found eigen3_cmake_module: 0.1.1 (/opt/ros/humble/share/eigen3_cmake_module/cmake)
+[2.430s] -- Found Eigen3: TRUE (found version "3.4.0") 
+[2.430s] -- Ensuring Eigen3 include directory is part of orocos-kdl CMake target
+[2.552s] -- Configuring done
+[2.592s] -- Generating done
+[2.601s] -- Build files have been written to: /home/casso/tools/06_pcd2rviz2/build/pcd2rviz
+[2.616s] Invoked command in '/home/casso/tools/06_pcd2rviz2/build/pcd2rviz' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/casso/tools/06_pcd2rviz2/src/pcd2rviz -DCMAKE_INSTALL_PREFIX=/home/casso/tools/06_pcd2rviz2/install/pcd2rviz
+[2.618s] Invoking command in '/home/casso/tools/06_pcd2rviz2/build/pcd2rviz': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/casso/tools/06_pcd2rviz2/build/pcd2rviz -- -j16 -l16
+[2.670s] [ 50%] [32mBuilding CXX object CMakeFiles/pcd_publisher.dir/src/pcd_publish.cpp.o[0m
+[9.038s] [100%] [32m[1mLinking CXX executable pcd_publisher[0m
+[9.676s] /usr/bin/ld: CMakeFiles/pcd_publisher.dir/src/pcd_publish.cpp.o: in function `main':
+[9.676s] pcd_publish.cpp:(.text+0x42): undefined reference to `google::InitGoogleLogging(char const*)'
+[9.677s] /usr/bin/ld: pcd_publish.cpp:(.text+0x49): undefined reference to `fLB::FLAGS_logtostderr'
+[9.677s] /usr/bin/ld: pcd_publish.cpp:(.text+0x53): undefined reference to `fLB::FLAGS_colorlogtostderr'
+[9.677s] /usr/bin/ld: pcd_publish.cpp:(.text+0x5d): undefined reference to `fLB::FLAGS_alsologtostderr'
+[9.677s] /usr/bin/ld: pcd_publish.cpp:(.text+0x67): undefined reference to `fLS::FLAGS_log_dir[abi:cxx11]'
+[9.677s] /usr/bin/ld: pcd_publish.cpp:(.text+0x108): undefined reference to `google::ShutdownGoogleLogging()'
+[9.677s] /usr/bin/ld: CMakeFiles/pcd_publisher.dir/src/pcd_publish.cpp.o: in function `pcd_publish::pcd_publish()':
+[9.677s] pcd_publish.cpp:(.text+0x453): undefined reference to `google::LogMessage::LogMessage(char const*, int, int)'
+[9.677s] /usr/bin/ld: pcd_publish.cpp:(.text+0x462): undefined reference to `google::LogMessage::stream()'
+[9.677s] /usr/bin/ld: pcd_publish.cpp:(.text+0x486): undefined reference to `google::LogMessage::~LogMessage()'
+[9.677s] /usr/bin/ld: pcd_publish.cpp:(.text+0x14fd): undefined reference to `google::LogMessage::~LogMessage()'
+[9.677s] /usr/bin/ld: CMakeFiles/pcd_publisher.dir/src/pcd_publish.cpp.o: in function `pcd_publish::loadFile()':
+[9.677s] pcd_publish.cpp:(.text+0x1d2f): undefined reference to `google::LogMessage::LogMessage(char const*, int, int)'
+[9.678s] /usr/bin/ld: pcd_publish.cpp:(.text+0x1d3b): undefined reference to `google::LogMessage::stream()'
+[9.678s] /usr/bin/ld: pcd_publish.cpp:(.text+0x1d74): undefined reference to `google::LogMessage::~LogMessage()'
+[9.678s] /usr/bin/ld: pcd_publish.cpp:(.text+0x1dc9): undefined reference to `google::LogMessage::LogMessage(char const*, int, int)'
+[9.678s] /usr/bin/ld: pcd_publish.cpp:(.text+0x1dd5): undefined reference to `google::LogMessage::stream()'
+[9.678s] /usr/bin/ld: pcd_publish.cpp:(.text+0x1df6): undefined reference to `google::LogMessage::~LogMessage()'
+[9.678s] /usr/bin/ld: pcd_publish.cpp:(.text+0x1e0b): undefined reference to `google::LogMessage::~LogMessage()'
+[9.678s] /usr/bin/ld: pcd_publish.cpp:(.text+0x1e29): undefined reference to `google::LogMessage::~LogMessage()'
+[9.678s] /usr/bin/ld: CMakeFiles/pcd_publisher.dir/src/pcd_publish.cpp.o: in function `pcd_publish::removeOutliers()':
+[9.678s] pcd_publish.cpp:(.text+0x2087): undefined reference to `google::LogMessage::LogMessage(char const*, int)'
+[9.678s] /usr/bin/ld: pcd_publish.cpp:(.text+0x2096): undefined reference to `google::LogMessage::stream()'
+[9.678s] /usr/bin/ld: pcd_publish.cpp:(.text+0x20f4): undefined reference to `google::LogMessage::~LogMessage()'
+[9.678s] /usr/bin/ld: pcd_publish.cpp:(.text+0x2112): undefined reference to `google::LogMessage::LogMessage(char const*, int)'
+[9.678s] /usr/bin/ld: pcd_publish.cpp:(.text+0x2121): undefined reference to `google::LogMessage::stream()'
+[9.678s] /usr/bin/ld: pcd_publish.cpp:(.text+0x217f): undefined reference to `google::LogMessage::~LogMessage()'
+[9.678s] /usr/bin/ld: pcd_publish.cpp:(.text+0x2341): undefined reference to `google::LogMessage::~LogMessage()'
+[9.679s] /usr/bin/ld: pcd_publish.cpp:(.text+0x2359): undefined reference to `google::LogMessage::~LogMessage()'
+[9.679s] /usr/bin/ld: CMakeFiles/pcd_publisher.dir/src/pcd_publish.cpp.o: in function `pcd_publish::run()':
+[9.679s] pcd_publish.cpp:(.text+0x277f): undefined reference to `google::LogMessage::LogMessage(char const*, int)'
+[9.679s] /usr/bin/ld: pcd_publish.cpp:(.text+0x278e): undefined reference to `google::LogMessage::stream()'
+[9.679s] /usr/bin/ld: pcd_publish.cpp:(.text+0x27f2): undefined reference to `google::LogMessage::~LogMessage()'
+[9.679s] /usr/bin/ld: pcd_publish.cpp:(.text+0x2835): undefined reference to `google::LogMessage::LogMessage(char const*, int)'
+[9.679s] /usr/bin/ld: pcd_publish.cpp:(.text+0x2844): undefined reference to `google::LogMessage::stream()'
+[9.679s] /usr/bin/ld: pcd_publish.cpp:(.text+0x28a8): undefined reference to `google::LogMessage::~LogMessage()'
+[9.679s] /usr/bin/ld: pcd_publish.cpp:(.text+0x28eb): undefined reference to `google::LogMessage::LogMessage(char const*, int)'
+[9.679s] /usr/bin/ld: pcd_publish.cpp:(.text+0x28fa): undefined reference to `google::LogMessage::stream()'
+[9.679s] /usr/bin/ld: pcd_publish.cpp:(.text+0x295e): undefined reference to `google::LogMessage::~LogMessage()'
+[9.679s] /usr/bin/ld: pcd_publish.cpp:(.text+0x29a1): undefined reference to `google::LogMessage::LogMessage(char const*, int)'
+[9.680s] /usr/bin/ld: pcd_publish.cpp:(.text+0x29b0): undefined reference to `google::LogMessage::stream()'
+[9.680s] /usr/bin/ld: pcd_publish.cpp:(.text+0x2a14): undefined reference to `google::LogMessage::~LogMessage()'
+[9.680s] /usr/bin/ld: pcd_publish.cpp:(.text+0x2b9a): undefined reference to `google::LogMessage::LogMessage(char const*, int, int)'
+[9.680s] /usr/bin/ld: pcd_publish.cpp:(.text+0x2ba9): undefined reference to `google::LogMessage::stream()'
+[9.680s] /usr/bin/ld: pcd_publish.cpp:(.text+0x2be2): undefined reference to `google::LogMessage::~LogMessage()'
+[9.680s] /usr/bin/ld: pcd_publish.cpp:(.text+0x2cd0): undefined reference to `google::LogMessage::~LogMessage()'
+[9.680s] /usr/bin/ld: pcd_publish.cpp:(.text+0x2cf1): undefined reference to `google::LogMessage::~LogMessage()'
+[9.680s] /usr/bin/ld: pcd_publish.cpp:(.text+0x2d12): undefined reference to `google::LogMessage::~LogMessage()'
+[9.680s] /usr/bin/ld: pcd_publish.cpp:(.text+0x2d33): undefined reference to `google::LogMessage::~LogMessage()'
+[9.680s] /usr/bin/ld: CMakeFiles/pcd_publisher.dir/src/pcd_publish.cpp.o:pcd_publish.cpp:(.text+0x2d84): more undefined references to `google::LogMessage::~LogMessage()' follow
+[9.719s] collect2: error: ld returned 1 exit status
+[9.721s] gmake[2]: *** [CMakeFiles/pcd_publisher.dir/build.make:410: pcd_publisher] Error 1
+[9.721s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/pcd_publisher.dir/all] Error 2
+[9.721s] gmake: *** [Makefile:146: all] Error 2
+[9.724s] Invoked command in '/home/casso/tools/06_pcd2rviz2/build/pcd2rviz' returned '2': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/casso/tools/06_pcd2rviz2/build/pcd2rviz -- -j16 -l16

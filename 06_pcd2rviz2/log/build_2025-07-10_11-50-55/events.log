@@ -1,0 +1,247 @@
+[0.000000] (-) TimerEvent: {}
+[0.000635] (pcd2rviz) JobQueued: {'identifier': 'pcd2rviz', 'dependencies': OrderedDict()}
+[0.000667] (pcd2rviz) JobStarted: {'identifier': 'pcd2rviz'}
+[0.006432] (pcd2rviz) JobProgress: {'identifier': 'pcd2rviz', 'progress': 'cmake'}
+[0.006833] (pcd2rviz) Command: {'cmd': ['/usr/bin/cmake', '/home/casso/tools/06_pcd2rviz2/src/pcd2rviz', '-DCMAKE_INSTALL_PREFIX=/home/casso/tools/06_pcd2rviz2/install/pcd2rviz'], 'cwd': '/home/casso/tools/06_pcd2rviz2/build/pcd2rviz', 'env': OrderedDict([('GJS_DEBUG_TOPICS', 'JS ERROR;JS LOG'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('LANGUAGE', 'en_GB:en'), ('USER', 'casso'), ('LC_TIME', 'zh_CN.UTF-8'), ('XDG_SESSION_TYPE', 'x11'), ('GIT_ASKPASS', '/usr/share/code/resources/app/extensions/git/dist/askpass.sh'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/casso'), ('CHROME_DESKTOP', 'code.desktop'), ('TERM_PROGRAM_VERSION', '1.101.2'), ('DESKTOP_SESSION', 'ubuntu'), ('GIO_LAUNCHED_DESKTOP_FILE', '/usr/share/applications/code.desktop'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('VSCODE_GIT_ASKPASS_MAIN', '/usr/share/code/resources/app/extensions/git/dist/askpass-main.js'), ('LC_MONETARY', 'zh_CN.UTF-8'), ('VSCODE_GIT_ASKPASS_NODE', '/usr/share/code/code'), ('MANAGERPID', '1911'), ('SYSTEMD_EXEC_PID', '2241'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '3569'), ('ROS_DISTRO', 'humble'), ('GTK_IM_MODULE', 'ibus'), ('LOGNAME', 'casso'), ('JOURNAL_STREAM', '8:26493'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'casso'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/R7000P2021H:@/tmp/.ICE-unix/2217,unix/R7000P2021H:/tmp/.ICE-unix/2217'), ('INVOCATION_ID', '0b23a45c47904c34b8758f7f97627ef7'), ('PAPERSIZE', 'a4'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'zh_CN.UTF-8'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('GDK_BACKEND', 'x11'), ('DISPLAY', ':1'), ('LANG', 'en_GB.UTF-8'), ('XDG_CURRENT_DESKTOP', 'Unity'), ('LC_TELEPHONE', 'zh_CN.UTF-8'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('VSCODE_GIT_IPC_HANDLE', '/run/user/1000/vscode-git-27489edfcb.sock'), ('TERM_PROGRAM', 'vscode'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('ORIGINAL_XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('SHELL', '/bin/bash'), ('LC_NAME', 'zh_CN.UTF-8'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'zh_CN.UTF-8'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('GJS_DEBUG_OUTPUT', 'stderr'), ('LC_IDENTIFICATION', 'zh_CN.UTF-8'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', ''), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/casso/tools/06_pcd2rviz2/build/pcd2rviz'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/share/gnome:/home/casso/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('LC_NUMERIC', 'zh_CN.UTF-8'), ('LC_PAPER', 'zh_CN.UTF-8'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/opt/ros/humble')]), 'shell': False}
+[0.053585] (pcd2rviz) StdoutLine: {'line': b'-- The C compiler identification is GNU 11.4.0\n'}
+[0.099423] (pcd2rviz) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 11.4.0\n'}
+[0.099820] (-) TimerEvent: {}
+[0.105361] (pcd2rviz) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.166318] (pcd2rviz) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[0.171614] (pcd2rviz) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[0.171822] (pcd2rviz) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[0.172107] (pcd2rviz) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[0.174487] (pcd2rviz) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[0.199937] (-) TimerEvent: {}
+[0.242438] (pcd2rviz) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[0.247976] (pcd2rviz) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[0.248202] (pcd2rviz) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[0.248539] (pcd2rviz) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[0.250373] (pcd2rviz) StdoutLine: {'line': b'-- Found ament_cmake: 1.3.11 (/opt/ros/humble/share/ament_cmake/cmake)\n'}
+[0.300036] (-) TimerEvent: {}
+[0.371000] (pcd2rviz) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter \n'}
+[0.400134] (-) TimerEvent: {}
+[0.440763] (pcd2rviz) StdoutLine: {'line': b'-- Found rclcpp: 16.0.12 (/opt/ros/humble/share/rclcpp/cmake)\n'}
+[0.470058] (pcd2rviz) StdoutLine: {'line': b'-- Found rosidl_generator_c: 3.1.6 (/opt/ros/humble/share/rosidl_generator_c/cmake)\n'}
+[0.473373] (pcd2rviz) StdoutLine: {'line': b'-- Found rosidl_adapter: 3.1.6 (/opt/ros/humble/share/rosidl_adapter/cmake)\n'}
+[0.479163] (pcd2rviz) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 3.1.6 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)\n'}
+[0.488285] (pcd2rviz) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.499761] (pcd2rviz) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[0.500220] (-) TimerEvent: {}
+[0.531572] (pcd2rviz) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)\n'}
+[0.533307] (pcd2rviz) StdoutLine: {'line': b'-- Found rmw_fastrtps_cpp: 6.2.7 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)\n'}
+[0.600332] (-) TimerEvent: {}
+[0.607449] (pcd2rviz) StdoutLine: {'line': b'-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  \n'}
+[0.629729] (pcd2rviz) StdoutLine: {'line': b'-- Found FastRTPS: /opt/ros/humble/include  \n'}
+[0.664136] (pcd2rviz) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[0.669767] (pcd2rviz) StdoutLine: {'line': b'-- Looking for pthread.h\n'}
+[0.700450] (-) TimerEvent: {}
+[0.737006] (pcd2rviz) StdoutLine: {'line': b'-- Looking for pthread.h - found\n'}
+[0.737344] (pcd2rviz) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD\n'}
+[0.800552] (-) TimerEvent: {}
+[0.800747] (pcd2rviz) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success\n'}
+[0.801669] (pcd2rviz) StdoutLine: {'line': b'-- Found Threads: TRUE  \n'}
+[0.840167] (pcd2rviz) StdoutLine: {'line': b'-- Found sensor_msgs: 4.9.0 (/opt/ros/humble/share/sensor_msgs/cmake)\n'}
+[0.864987] (pcd2rviz) StdoutLine: {'line': b'-- Found pcl_conversions: 2.4.5 (/opt/ros/humble/share/pcl_conversions/cmake)\n'}
+[0.894472] (pcd2rviz) StdoutLine: {'line': b"-- Checking for module 'eigen3'\n"}
+[0.900635] (-) TimerEvent: {}
+[0.905573] (pcd2rviz) StdoutLine: {'line': b'--   Found eigen3, version 3.4.0\n'}
+[0.934844] (pcd2rviz) StdoutLine: {'line': b'-- Found Eigen: /usr/include/eigen3 (Required is at least version "3.1") \n'}
+[0.935051] (pcd2rviz) StdoutLine: {'line': b'-- Eigen found (include: /usr/include/eigen3, version: 3.4.0)\n'}
+[0.962086] (pcd2rviz) StdoutLine: {'line': b"-- Checking for module 'flann'\n"}
+[0.973942] (pcd2rviz) StdoutLine: {'line': b'--   Found flann, version 1.9.1\n'}
+[1.000750] (-) TimerEvent: {}
+[1.008501] (pcd2rviz) StdoutLine: {'line': b'-- Found FLANN: /usr/lib/x86_64-linux-gnu/libflann_cpp.so  \n'}
+[1.008690] (pcd2rviz) StdoutLine: {'line': b'-- FLANN found (include: /usr/include, lib: /usr/lib/x86_64-linux-gnu/libflann_cpp.so)\n'}
+[1.100865] (-) TimerEvent: {}
+[1.201147] (-) TimerEvent: {}
+[1.301455] (-) TimerEvent: {}
+[1.401730] (-) TimerEvent: {}
+[1.502008] (-) TimerEvent: {}
+[1.602304] (-) TimerEvent: {}
+[1.702586] (-) TimerEvent: {}
+[1.802852] (-) TimerEvent: {}
+[1.806734] (pcd2rviz) StdoutLine: {'line': b"-- Checking for module 'libusb-1.0'\n"}
+[1.819003] (pcd2rviz) StdoutLine: {'line': b'--   Found libusb-1.0, version 1.0.25\n'}
+[1.852106] (pcd2rviz) StdoutLine: {'line': b'-- Found libusb: /usr/lib/x86_64-linux-gnu/libusb-1.0.so  \n'}
+[1.852907] (pcd2rviz) StdoutLine: {'line': b'-- OpenNI found (version: 1.5.4.0, include: /usr/include/ni, lib: /usr/lib/libOpenNI.so;libusb::libusb)\n'}
+[1.902967] (-) TimerEvent: {}
+[1.906629] (pcd2rviz) StdoutLine: {'line': b'-- OpenNI2 found (version: 2.2.0.33, include: /usr/include/openni2, lib: /usr/lib/x86_64-linux-gnu/libOpenNI2.so;libusb::libusb)\n'}
+[2.003086] (-) TimerEvent: {}
+[2.028692] (pcd2rviz) StdoutLine: {'line': b'-- Eigen found (include: /usr/include/eigen3, version: 3.4.0)\n'}
+[2.034105] (pcd2rviz) StdoutLine: {'line': b'-- OpenNI found (version: 1.5.4.0, include: /usr/include/ni, lib: /usr/lib/libOpenNI.so;libusb::libusb)\n'}
+[2.039645] (pcd2rviz) StdoutLine: {'line': b'-- OpenNI2 found (version: 2.2.0.33, include: /usr/include/openni2, lib: /usr/lib/x86_64-linux-gnu/libOpenNI2.so;libusb::libusb)\n'}
+[2.103199] (-) TimerEvent: {}
+[2.153111] (pcd2rviz) StdoutLine: {'line': b'-- Found Qhull version 8.0.2\n'}
+[2.203322] (-) TimerEvent: {}
+[2.273332] (pcd2rviz) StdoutLine: {'line': b'-- OpenNI found (version: 1.5.4.0, include: /usr/include/ni, lib: /usr/lib/libOpenNI.so;libusb::libusb)\n'}
+[2.303426] (-) TimerEvent: {}
+[2.388858] (pcd2rviz) StdoutLine: {'line': b'-- Found PCL_COMMON: /usr/lib/x86_64-linux-gnu/libpcl_common.so  \n'}
+[2.389423] (pcd2rviz) StdoutLine: {'line': b'-- Found PCL_KDTREE: /usr/lib/x86_64-linux-gnu/libpcl_kdtree.so  \n'}
+[2.390028] (pcd2rviz) StdoutLine: {'line': b'-- Found PCL_OCTREE: /usr/lib/x86_64-linux-gnu/libpcl_octree.so  \n'}
+[2.390586] (pcd2rviz) StdoutLine: {'line': b'-- Found PCL_SEARCH: /usr/lib/x86_64-linux-gnu/libpcl_search.so  \n'}
+[2.391182] (pcd2rviz) StdoutLine: {'line': b'-- Found PCL_SAMPLE_CONSENSUS: /usr/lib/x86_64-linux-gnu/libpcl_sample_consensus.so  \n'}
+[2.391781] (pcd2rviz) StdoutLine: {'line': b'-- Found PCL_FILTERS: /usr/lib/x86_64-linux-gnu/libpcl_filters.so  \n'}
+[2.392054] (pcd2rviz) StdoutLine: {'line': b'-- Found PCL_2D: /usr/include/pcl-1.12  \n'}
+[2.392290] (pcd2rviz) StdoutLine: {'line': b'-- Found PCL_GEOMETRY: /usr/include/pcl-1.12  \n'}
+[2.392866] (pcd2rviz) StdoutLine: {'line': b'-- Found PCL_IO: /usr/lib/x86_64-linux-gnu/libpcl_io.so  \n'}
+[2.393533] (pcd2rviz) StdoutLine: {'line': b'-- Found PCL_FEATURES: /usr/lib/x86_64-linux-gnu/libpcl_features.so  \n'}
+[2.394169] (pcd2rviz) StdoutLine: {'line': b'-- Found PCL_ML: /usr/lib/x86_64-linux-gnu/libpcl_ml.so  \n'}
+[2.394741] (pcd2rviz) StdoutLine: {'line': b'-- Found PCL_SEGMENTATION: /usr/lib/x86_64-linux-gnu/libpcl_segmentation.so  \n'}
+[2.395575] (pcd2rviz) StdoutLine: {'line': b'-- Found PCL_VISUALIZATION: /usr/lib/x86_64-linux-gnu/libpcl_visualization.so  \n'}
+[2.396268] (pcd2rviz) StdoutLine: {'line': b'-- Found PCL_SURFACE: /usr/lib/x86_64-linux-gnu/libpcl_surface.so  \n'}
+[2.396899] (pcd2rviz) StdoutLine: {'line': b'-- Found PCL_REGISTRATION: /usr/lib/x86_64-linux-gnu/libpcl_registration.so  \n'}
+[2.397562] (pcd2rviz) StdoutLine: {'line': b'-- Found PCL_KEYPOINTS: /usr/lib/x86_64-linux-gnu/libpcl_keypoints.so  \n'}
+[2.398230] (pcd2rviz) StdoutLine: {'line': b'-- Found PCL_TRACKING: /usr/lib/x86_64-linux-gnu/libpcl_tracking.so  \n'}
+[2.398868] (pcd2rviz) StdoutLine: {'line': b'-- Found PCL_RECOGNITION: /usr/lib/x86_64-linux-gnu/libpcl_recognition.so  \n'}
+[2.399607] (pcd2rviz) StdoutLine: {'line': b'-- Found PCL_STEREO: /usr/lib/x86_64-linux-gnu/libpcl_stereo.so  \n'}
+[2.400194] (pcd2rviz) StdoutLine: {'line': b'-- Found PCL_APPS: /usr/lib/x86_64-linux-gnu/libpcl_apps.so  \n'}
+[2.400764] (pcd2rviz) StdoutLine: {'line': b'-- Found PCL_IN_HAND_SCANNER: /usr/include/pcl-1.12  \n'}
+[2.400996] (pcd2rviz) StdoutLine: {'line': b'-- Found PCL_MODELER: /usr/include/pcl-1.12  \n'}
+[2.401245] (pcd2rviz) StdoutLine: {'line': b'-- Found PCL_POINT_CLOUD_EDITOR: /usr/include/pcl-1.12  \n'}
+[2.401932] (pcd2rviz) StdoutLine: {'line': b'-- Found PCL_OUTOFCORE: /usr/lib/x86_64-linux-gnu/libpcl_outofcore.so  \n'}
+[2.402521] (pcd2rviz) StdoutLine: {'line': b'-- Found PCL_PEOPLE: /usr/lib/x86_64-linux-gnu/libpcl_people.so  \n'}
+[2.403518] (-) TimerEvent: {}
+[2.404733] (pcd2rviz) StdoutLine: {'line': b'-- Found pcl_ros: 2.4.5 (/opt/ros/humble/share/pcl_ros/cmake)\n'}
+[2.429954] (pcd2rviz) StdoutLine: {'line': b'-- Found eigen3_cmake_module: 0.1.1 (/opt/ros/humble/share/eigen3_cmake_module/cmake)\n'}
+[2.430913] (pcd2rviz) StdoutLine: {'line': b'-- Found Eigen3: TRUE (found version "3.4.0") \n'}
+[2.431022] (pcd2rviz) StdoutLine: {'line': b'-- Ensuring Eigen3 include directory is part of orocos-kdl CMake target\n'}
+[2.503634] (-) TimerEvent: {}
+[2.552399] (pcd2rviz) StdoutLine: {'line': b'-- Configuring done\n'}
+[2.592192] (pcd2rviz) StdoutLine: {'line': b'-- Generating done\n'}
+[2.601533] (pcd2rviz) StdoutLine: {'line': b'-- Build files have been written to: /home/casso/tools/06_pcd2rviz2/build/pcd2rviz\n'}
+[2.603704] (-) TimerEvent: {}
+[2.616921] (pcd2rviz) CommandEnded: {'returncode': 0}
+[2.617603] (pcd2rviz) JobProgress: {'identifier': 'pcd2rviz', 'progress': 'build'}
+[2.618681] (pcd2rviz) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/casso/tools/06_pcd2rviz2/build/pcd2rviz', '--', '-j16', '-l16'], 'cwd': '/home/casso/tools/06_pcd2rviz2/build/pcd2rviz', 'env': OrderedDict([('GJS_DEBUG_TOPICS', 'JS ERROR;JS LOG'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('LANGUAGE', 'en_GB:en'), ('USER', 'casso'), ('LC_TIME', 'zh_CN.UTF-8'), ('XDG_SESSION_TYPE', 'x11'), ('GIT_ASKPASS', '/usr/share/code/resources/app/extensions/git/dist/askpass.sh'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/casso'), ('CHROME_DESKTOP', 'code.desktop'), ('TERM_PROGRAM_VERSION', '1.101.2'), ('DESKTOP_SESSION', 'ubuntu'), ('GIO_LAUNCHED_DESKTOP_FILE', '/usr/share/applications/code.desktop'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('VSCODE_GIT_ASKPASS_MAIN', '/usr/share/code/resources/app/extensions/git/dist/askpass-main.js'), ('LC_MONETARY', 'zh_CN.UTF-8'), ('VSCODE_GIT_ASKPASS_NODE', '/usr/share/code/code'), ('MANAGERPID', '1911'), ('SYSTEMD_EXEC_PID', '2241'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '3569'), ('ROS_DISTRO', 'humble'), ('GTK_IM_MODULE', 'ibus'), ('LOGNAME', 'casso'), ('JOURNAL_STREAM', '8:26493'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'casso'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/R7000P2021H:@/tmp/.ICE-unix/2217,unix/R7000P2021H:/tmp/.ICE-unix/2217'), ('INVOCATION_ID', '0b23a45c47904c34b8758f7f97627ef7'), ('PAPERSIZE', 'a4'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'zh_CN.UTF-8'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('GDK_BACKEND', 'x11'), ('DISPLAY', ':1'), ('LANG', 'en_GB.UTF-8'), ('XDG_CURRENT_DESKTOP', 'Unity'), ('LC_TELEPHONE', 'zh_CN.UTF-8'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('VSCODE_GIT_IPC_HANDLE', '/run/user/1000/vscode-git-27489edfcb.sock'), ('TERM_PROGRAM', 'vscode'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('ORIGINAL_XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('SHELL', '/bin/bash'), ('LC_NAME', 'zh_CN.UTF-8'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'zh_CN.UTF-8'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('GJS_DEBUG_OUTPUT', 'stderr'), ('LC_IDENTIFICATION', 'zh_CN.UTF-8'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', ''), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/casso/tools/06_pcd2rviz2/build/pcd2rviz'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/share/gnome:/home/casso/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('LC_NUMERIC', 'zh_CN.UTF-8'), ('LC_PAPER', 'zh_CN.UTF-8'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/opt/ros/humble')]), 'shell': False}
+[2.670859] (pcd2rviz) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/pcd_publisher.dir/src/pcd_publish.cpp.o\x1b[0m\n'}
+[2.703865] (-) TimerEvent: {}
+[2.804183] (-) TimerEvent: {}
+[2.904462] (-) TimerEvent: {}
+[3.004760] (-) TimerEvent: {}
+[3.105028] (-) TimerEvent: {}
+[3.205300] (-) TimerEvent: {}
+[3.305561] (-) TimerEvent: {}
+[3.405842] (-) TimerEvent: {}
+[3.506108] (-) TimerEvent: {}
+[3.606388] (-) TimerEvent: {}
+[3.706671] (-) TimerEvent: {}
+[3.806979] (-) TimerEvent: {}
+[3.907259] (-) TimerEvent: {}
+[4.007550] (-) TimerEvent: {}
+[4.107860] (-) TimerEvent: {}
+[4.208140] (-) TimerEvent: {}
+[4.308406] (-) TimerEvent: {}
+[4.408682] (-) TimerEvent: {}
+[4.508959] (-) TimerEvent: {}
+[4.609240] (-) TimerEvent: {}
+[4.709532] (-) TimerEvent: {}
+[4.809829] (-) TimerEvent: {}
+[4.910106] (-) TimerEvent: {}
+[5.010369] (-) TimerEvent: {}
+[5.110648] (-) TimerEvent: {}
+[5.210922] (-) TimerEvent: {}
+[5.311220] (-) TimerEvent: {}
+[5.411509] (-) TimerEvent: {}
+[5.511815] (-) TimerEvent: {}
+[5.612099] (-) TimerEvent: {}
+[5.712386] (-) TimerEvent: {}
+[5.812674] (-) TimerEvent: {}
+[5.912956] (-) TimerEvent: {}
+[6.013219] (-) TimerEvent: {}
+[6.113510] (-) TimerEvent: {}
+[6.214200] (-) TimerEvent: {}
+[6.314471] (-) TimerEvent: {}
+[6.414713] (-) TimerEvent: {}
+[6.514986] (-) TimerEvent: {}
+[6.615259] (-) TimerEvent: {}
+[6.715548] (-) TimerEvent: {}
+[6.815828] (-) TimerEvent: {}
+[6.916136] (-) TimerEvent: {}
+[7.016394] (-) TimerEvent: {}
+[7.116680] (-) TimerEvent: {}
+[7.216982] (-) TimerEvent: {}
+[7.317257] (-) TimerEvent: {}
+[7.417554] (-) TimerEvent: {}
+[7.517856] (-) TimerEvent: {}
+[7.618557] (-) TimerEvent: {}
+[7.719550] (-) TimerEvent: {}
+[7.819863] (-) TimerEvent: {}
+[7.920173] (-) TimerEvent: {}
+[8.020475] (-) TimerEvent: {}
+[8.120771] (-) TimerEvent: {}
+[8.221075] (-) TimerEvent: {}
+[8.321374] (-) TimerEvent: {}
+[8.421651] (-) TimerEvent: {}
+[8.521942] (-) TimerEvent: {}
+[8.622227] (-) TimerEvent: {}
+[8.722512] (-) TimerEvent: {}
+[8.822774] (-) TimerEvent: {}
+[8.923059] (-) TimerEvent: {}
+[9.023352] (-) TimerEvent: {}
+[9.038215] (pcd2rviz) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX executable pcd_publisher\x1b[0m\n'}
+[9.123468] (-) TimerEvent: {}
+[9.223791] (-) TimerEvent: {}
+[9.324088] (-) TimerEvent: {}
+[9.424379] (-) TimerEvent: {}
+[9.524661] (-) TimerEvent: {}
+[9.624962] (-) TimerEvent: {}
+[9.676878] (pcd2rviz) StderrLine: {'line': b"/usr/bin/ld: CMakeFiles/pcd_publisher.dir/src/pcd_publish.cpp.o: in function `main':\n"}
+[9.677124] (pcd2rviz) StderrLine: {'line': b"pcd_publish.cpp:(.text+0x42): undefined reference to `google::InitGoogleLogging(char const*)'\n"}
+[9.677197] (pcd2rviz) StderrLine: {'line': b"/usr/bin/ld: pcd_publish.cpp:(.text+0x49): undefined reference to `fLB::FLAGS_logtostderr'\n"}
+[9.677298] (pcd2rviz) StderrLine: {'line': b"/usr/bin/ld: pcd_publish.cpp:(.text+0x53): undefined reference to `fLB::FLAGS_colorlogtostderr'\n"}
+[9.677354] (pcd2rviz) StderrLine: {'line': b"/usr/bin/ld: pcd_publish.cpp:(.text+0x5d): undefined reference to `fLB::FLAGS_alsologtostderr'\n"}
+[9.677464] (pcd2rviz) StderrLine: {'line': b"/usr/bin/ld: pcd_publish.cpp:(.text+0x67): undefined reference to `fLS::FLAGS_log_dir[abi:cxx11]'\n"}
+[9.677554] (pcd2rviz) StderrLine: {'line': b"/usr/bin/ld: pcd_publish.cpp:(.text+0x108): undefined reference to `google::ShutdownGoogleLogging()'\n"}
+[9.677639] (pcd2rviz) StderrLine: {'line': b"/usr/bin/ld: CMakeFiles/pcd_publisher.dir/src/pcd_publish.cpp.o: in function `pcd_publish::pcd_publish()':\n"}
+[9.677716] (pcd2rviz) StderrLine: {'line': b"pcd_publish.cpp:(.text+0x453): undefined reference to `google::LogMessage::LogMessage(char const*, int, int)'\n"}
+[9.677784] (pcd2rviz) StderrLine: {'line': b"/usr/bin/ld: pcd_publish.cpp:(.text+0x462): undefined reference to `google::LogMessage::stream()'\n"}
+[9.677871] (pcd2rviz) StderrLine: {'line': b"/usr/bin/ld: pcd_publish.cpp:(.text+0x486): undefined reference to `google::LogMessage::~LogMessage()'\n"}
+[9.677924] (pcd2rviz) StderrLine: {'line': b"/usr/bin/ld: pcd_publish.cpp:(.text+0x14fd): undefined reference to `google::LogMessage::~LogMessage()'\n"}
+[9.678035] (pcd2rviz) StderrLine: {'line': b"/usr/bin/ld: CMakeFiles/pcd_publisher.dir/src/pcd_publish.cpp.o: in function `pcd_publish::loadFile()':\n"}
+[9.678106] (pcd2rviz) StderrLine: {'line': b"pcd_publish.cpp:(.text+0x1d2f): undefined reference to `google::LogMessage::LogMessage(char const*, int, int)'\n"}
+[9.678164] (pcd2rviz) StderrLine: {'line': b"/usr/bin/ld: pcd_publish.cpp:(.text+0x1d3b): undefined reference to `google::LogMessage::stream()'\n"}
+[9.678259] (pcd2rviz) StderrLine: {'line': b"/usr/bin/ld: pcd_publish.cpp:(.text+0x1d74): undefined reference to `google::LogMessage::~LogMessage()'\n"}
+[9.678335] (pcd2rviz) StderrLine: {'line': b"/usr/bin/ld: pcd_publish.cpp:(.text+0x1dc9): undefined reference to `google::LogMessage::LogMessage(char const*, int, int)'\n"}
+[9.678390] (pcd2rviz) StderrLine: {'line': b"/usr/bin/ld: pcd_publish.cpp:(.text+0x1dd5): undefined reference to `google::LogMessage::stream()'\n"}
+[9.678441] (pcd2rviz) StderrLine: {'line': b"/usr/bin/ld: pcd_publish.cpp:(.text+0x1df6): undefined reference to `google::LogMessage::~LogMessage()'\n"}
+[9.678495] (pcd2rviz) StderrLine: {'line': b"/usr/bin/ld: pcd_publish.cpp:(.text+0x1e0b): undefined reference to `google::LogMessage::~LogMessage()'\n"}
+[9.678597] (pcd2rviz) StderrLine: {'line': b"/usr/bin/ld: pcd_publish.cpp:(.text+0x1e29): undefined reference to `google::LogMessage::~LogMessage()'\n"}
+[9.678644] (pcd2rviz) StderrLine: {'line': b"/usr/bin/ld: CMakeFiles/pcd_publisher.dir/src/pcd_publish.cpp.o: in function `pcd_publish::removeOutliers()':\n"}
+[9.678706] (pcd2rviz) StderrLine: {'line': b"pcd_publish.cpp:(.text+0x2087): undefined reference to `google::LogMessage::LogMessage(char const*, int)'\n"}
+[9.678749] (pcd2rviz) StderrLine: {'line': b"/usr/bin/ld: pcd_publish.cpp:(.text+0x2096): undefined reference to `google::LogMessage::stream()'\n"}
+[9.678805] (pcd2rviz) StderrLine: {'line': b"/usr/bin/ld: pcd_publish.cpp:(.text+0x20f4): undefined reference to `google::LogMessage::~LogMessage()'\n"}
+[9.678882] (pcd2rviz) StderrLine: {'line': b"/usr/bin/ld: pcd_publish.cpp:(.text+0x2112): undefined reference to `google::LogMessage::LogMessage(char const*, int)'\n"}
+[9.678928] (pcd2rviz) StderrLine: {'line': b"/usr/bin/ld: pcd_publish.cpp:(.text+0x2121): undefined reference to `google::LogMessage::stream()'\n"}
+[9.679010] (pcd2rviz) StderrLine: {'line': b"/usr/bin/ld: pcd_publish.cpp:(.text+0x217f): undefined reference to `google::LogMessage::~LogMessage()'\n"}
+[9.679075] (pcd2rviz) StderrLine: {'line': b"/usr/bin/ld: pcd_publish.cpp:(.text+0x2341): undefined reference to `google::LogMessage::~LogMessage()'\n"}
+[9.679155] (pcd2rviz) StderrLine: {'line': b"/usr/bin/ld: pcd_publish.cpp:(.text+0x2359): undefined reference to `google::LogMessage::~LogMessage()'\n"}
+[9.679227] (pcd2rviz) StderrLine: {'line': b"/usr/bin/ld: CMakeFiles/pcd_publisher.dir/src/pcd_publish.cpp.o: in function `pcd_publish::run()':\n"}
+[9.679286] (pcd2rviz) StderrLine: {'line': b"pcd_publish.cpp:(.text+0x277f): undefined reference to `google::LogMessage::LogMessage(char const*, int)'\n"}
+[9.679369] (pcd2rviz) StderrLine: {'line': b"/usr/bin/ld: pcd_publish.cpp:(.text+0x278e): undefined reference to `google::LogMessage::stream()'\n"}
+[9.679451] (pcd2rviz) StderrLine: {'line': b"/usr/bin/ld: pcd_publish.cpp:(.text+0x27f2): undefined reference to `google::LogMessage::~LogMessage()'\n"}
+[9.679537] (pcd2rviz) StderrLine: {'line': b"/usr/bin/ld: pcd_publish.cpp:(.text+0x2835): undefined reference to `google::LogMessage::LogMessage(char const*, int)'\n"}
+[9.679626] (pcd2rviz) StderrLine: {'line': b"/usr/bin/ld: pcd_publish.cpp:(.text+0x2844): undefined reference to `google::LogMessage::stream()'\n"}
+[9.679709] (pcd2rviz) StderrLine: {'line': b"/usr/bin/ld: pcd_publish.cpp:(.text+0x28a8): undefined reference to `google::LogMessage::~LogMessage()'\n"}
+[9.679791] (pcd2rviz) StderrLine: {'line': b"/usr/bin/ld: pcd_publish.cpp:(.text+0x28eb): undefined reference to `google::LogMessage::LogMessage(char const*, int)'\n"}
+[9.679886] (pcd2rviz) StderrLine: {'line': b"/usr/bin/ld: pcd_publish.cpp:(.text+0x28fa): undefined reference to `google::LogMessage::stream()'\n"}
+[9.679977] (pcd2rviz) StderrLine: {'line': b"/usr/bin/ld: pcd_publish.cpp:(.text+0x295e): undefined reference to `google::LogMessage::~LogMessage()'\n"}
+[9.680069] (pcd2rviz) StderrLine: {'line': b"/usr/bin/ld: pcd_publish.cpp:(.text+0x29a1): undefined reference to `google::LogMessage::LogMessage(char const*, int)'\n"}
+[9.680151] (pcd2rviz) StderrLine: {'line': b"/usr/bin/ld: pcd_publish.cpp:(.text+0x29b0): undefined reference to `google::LogMessage::stream()'\n"}
+[9.680234] (pcd2rviz) StderrLine: {'line': b"/usr/bin/ld: pcd_publish.cpp:(.text+0x2a14): undefined reference to `google::LogMessage::~LogMessage()'\n"}
+[9.680318] (pcd2rviz) StderrLine: {'line': b"/usr/bin/ld: pcd_publish.cpp:(.text+0x2b9a): undefined reference to `google::LogMessage::LogMessage(char const*, int, int)'\n"}
+[9.680402] (pcd2rviz) StderrLine: {'line': b"/usr/bin/ld: pcd_publish.cpp:(.text+0x2ba9): undefined reference to `google::LogMessage::stream()'\n"}
+[9.680483] (pcd2rviz) StderrLine: {'line': b"/usr/bin/ld: pcd_publish.cpp:(.text+0x2be2): undefined reference to `google::LogMessage::~LogMessage()'\n"}
+[9.680571] (pcd2rviz) StderrLine: {'line': b"/usr/bin/ld: pcd_publish.cpp:(.text+0x2cd0): undefined reference to `google::LogMessage::~LogMessage()'\n"}
+[9.680655] (pcd2rviz) StderrLine: {'line': b"/usr/bin/ld: pcd_publish.cpp:(.text+0x2cf1): undefined reference to `google::LogMessage::~LogMessage()'\n"}
+[9.680743] (pcd2rviz) StderrLine: {'line': b"/usr/bin/ld: pcd_publish.cpp:(.text+0x2d12): undefined reference to `google::LogMessage::~LogMessage()'\n"}
+[9.680839] (pcd2rviz) StderrLine: {'line': b"/usr/bin/ld: pcd_publish.cpp:(.text+0x2d33): undefined reference to `google::LogMessage::~LogMessage()'\n"}
+[9.680924] (pcd2rviz) StderrLine: {'line': b"/usr/bin/ld: CMakeFiles/pcd_publisher.dir/src/pcd_publish.cpp.o:pcd_publish.cpp:(.text+0x2d84): more undefined references to `google::LogMessage::~LogMessage()' follow\n"}
+[9.719356] (pcd2rviz) StderrLine: {'line': b'collect2: error: ld returned 1 exit status\n'}
+[9.721307] (pcd2rviz) StderrLine: {'line': b'gmake[2]: *** [CMakeFiles/pcd_publisher.dir/build.make:410: pcd_publisher] Error 1\n'}
+[9.721713] (pcd2rviz) StderrLine: {'line': b'gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/pcd_publisher.dir/all] Error 2\n'}
+[9.721952] (pcd2rviz) StderrLine: {'line': b'gmake: *** [Makefile:146: all] Error 2\n'}
+[9.724269] (pcd2rviz) CommandEnded: {'returncode': 2}
+[9.725028] (-) TimerEvent: {}
+[9.730535] (pcd2rviz) JobEnded: {'identifier': 'pcd2rviz', 'rc': 2}
+[9.731185] (-) EventReactorShutdown: {}

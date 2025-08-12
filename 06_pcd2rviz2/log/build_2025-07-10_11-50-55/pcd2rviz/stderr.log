@@ -1,0 +1,55 @@
+/usr/bin/ld: CMakeFiles/pcd_publisher.dir/src/pcd_publish.cpp.o: in function `main':
+pcd_publish.cpp:(.text+0x42): undefined reference to `google::InitGoogleLogging(char const*)'
+/usr/bin/ld: pcd_publish.cpp:(.text+0x49): undefined reference to `fLB::FLAGS_logtostderr'
+/usr/bin/ld: pcd_publish.cpp:(.text+0x53): undefined reference to `fLB::FLAGS_colorlogtostderr'
+/usr/bin/ld: pcd_publish.cpp:(.text+0x5d): undefined reference to `fLB::FLAGS_alsologtostderr'
+/usr/bin/ld: pcd_publish.cpp:(.text+0x67): undefined reference to `fLS::FLAGS_log_dir[abi:cxx11]'
+/usr/bin/ld: pcd_publish.cpp:(.text+0x108): undefined reference to `google::ShutdownGoogleLogging()'
+/usr/bin/ld: CMakeFiles/pcd_publisher.dir/src/pcd_publish.cpp.o: in function `pcd_publish::pcd_publish()':
+pcd_publish.cpp:(.text+0x453): undefined reference to `google::LogMessage::LogMessage(char const*, int, int)'
+/usr/bin/ld: pcd_publish.cpp:(.text+0x462): undefined reference to `google::LogMessage::stream()'
+/usr/bin/ld: pcd_publish.cpp:(.text+0x486): undefined reference to `google::LogMessage::~LogMessage()'
+/usr/bin/ld: pcd_publish.cpp:(.text+0x14fd): undefined reference to `google::LogMessage::~LogMessage()'
+/usr/bin/ld: CMakeFiles/pcd_publisher.dir/src/pcd_publish.cpp.o: in function `pcd_publish::loadFile()':
+pcd_publish.cpp:(.text+0x1d2f): undefined reference to `google::LogMessage::LogMessage(char const*, int, int)'
+/usr/bin/ld: pcd_publish.cpp:(.text+0x1d3b): undefined reference to `google::LogMessage::stream()'
+/usr/bin/ld: pcd_publish.cpp:(.text+0x1d74): undefined reference to `google::LogMessage::~LogMessage()'
+/usr/bin/ld: pcd_publish.cpp:(.text+0x1dc9): undefined reference to `google::LogMessage::LogMessage(char const*, int, int)'
+/usr/bin/ld: pcd_publish.cpp:(.text+0x1dd5): undefined reference to `google::LogMessage::stream()'
+/usr/bin/ld: pcd_publish.cpp:(.text+0x1df6): undefined reference to `google::LogMessage::~LogMessage()'
+/usr/bin/ld: pcd_publish.cpp:(.text+0x1e0b): undefined reference to `google::LogMessage::~LogMessage()'
+/usr/bin/ld: pcd_publish.cpp:(.text+0x1e29): undefined reference to `google::LogMessage::~LogMessage()'
+/usr/bin/ld: CMakeFiles/pcd_publisher.dir/src/pcd_publish.cpp.o: in function `pcd_publish::removeOutliers()':
+pcd_publish.cpp:(.text+0x2087): undefined reference to `google::LogMessage::LogMessage(char const*, int)'
+/usr/bin/ld: pcd_publish.cpp:(.text+0x2096): undefined reference to `google::LogMessage::stream()'
+/usr/bin/ld: pcd_publish.cpp:(.text+0x20f4): undefined reference to `google::LogMessage::~LogMessage()'
+/usr/bin/ld: pcd_publish.cpp:(.text+0x2112): undefined reference to `google::LogMessage::LogMessage(char const*, int)'
+/usr/bin/ld: pcd_publish.cpp:(.text+0x2121): undefined reference to `google::LogMessage::stream()'
+/usr/bin/ld: pcd_publish.cpp:(.text+0x217f): undefined reference to `google::LogMessage::~LogMessage()'
+/usr/bin/ld: pcd_publish.cpp:(.text+0x2341): undefined reference to `google::LogMessage::~LogMessage()'
+/usr/bin/ld: pcd_publish.cpp:(.text+0x2359): undefined reference to `google::LogMessage::~LogMessage()'
+/usr/bin/ld: CMakeFiles/pcd_publisher.dir/src/pcd_publish.cpp.o: in function `pcd_publish::run()':
+pcd_publish.cpp:(.text+0x277f): undefined reference to `google::LogMessage::LogMessage(char const*, int)'
+/usr/bin/ld: pcd_publish.cpp:(.text+0x278e): undefined reference to `google::LogMessage::stream()'
+/usr/bin/ld: pcd_publish.cpp:(.text+0x27f2): undefined reference to `google::LogMessage::~LogMessage()'
+/usr/bin/ld: pcd_publish.cpp:(.text+0x2835): undefined reference to `google::LogMessage::LogMessage(char const*, int)'
+/usr/bin/ld: pcd_publish.cpp:(.text+0x2844): undefined reference to `google::LogMessage::stream()'
+/usr/bin/ld: pcd_publish.cpp:(.text+0x28a8): undefined reference to `google::LogMessage::~LogMessage()'
+/usr/bin/ld: pcd_publish.cpp:(.text+0x28eb): undefined reference to `google::LogMessage::LogMessage(char const*, int)'
+/usr/bin/ld: pcd_publish.cpp:(.text+0x28fa): undefined reference to `google::LogMessage::stream()'
+/usr/bin/ld: pcd_publish.cpp:(.text+0x295e): undefined reference to `google::LogMessage::~LogMessage()'
+/usr/bin/ld: pcd_publish.cpp:(.text+0x29a1): undefined reference to `google::LogMessage::LogMessage(char const*, int)'
+/usr/bin/ld: pcd_publish.cpp:(.text+0x29b0): undefined reference to `google::LogMessage::stream()'
+/usr/bin/ld: pcd_publish.cpp:(.text+0x2a14): undefined reference to `google::LogMessage::~LogMessage()'
+/usr/bin/ld: pcd_publish.cpp:(.text+0x2b9a): undefined reference to `google::LogMessage::LogMessage(char const*, int, int)'
+/usr/bin/ld: pcd_publish.cpp:(.text+0x2ba9): undefined reference to `google::LogMessage::stream()'
+/usr/bin/ld: pcd_publish.cpp:(.text+0x2be2): undefined reference to `google::LogMessage::~LogMessage()'
+/usr/bin/ld: pcd_publish.cpp:(.text+0x2cd0): undefined reference to `google::LogMessage::~LogMessage()'
+/usr/bin/ld: pcd_publish.cpp:(.text+0x2cf1): undefined reference to `google::LogMessage::~LogMessage()'
+/usr/bin/ld: pcd_publish.cpp:(.text+0x2d12): undefined reference to `google::LogMessage::~LogMessage()'
+/usr/bin/ld: pcd_publish.cpp:(.text+0x2d33): undefined reference to `google::LogMessage::~LogMessage()'
+/usr/bin/ld: CMakeFiles/pcd_publisher.dir/src/pcd_publish.cpp.o:pcd_publish.cpp:(.text+0x2d84): more undefined references to `google::LogMessage::~LogMessage()' follow
+collect2: error: ld returned 1 exit status
+gmake[2]: *** [CMakeFiles/pcd_publisher.dir/build.make:410: pcd_publisher] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/pcd_publisher.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

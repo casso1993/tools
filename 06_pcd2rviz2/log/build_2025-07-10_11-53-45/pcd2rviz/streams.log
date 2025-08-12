@@ -1,0 +1,26 @@
+[0.009s] Invoking command in '/home/casso/tools/06_pcd2rviz2/build/pcd2rviz': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/casso/tools/06_pcd2rviz2/build/pcd2rviz -- -j16 -l16
+[0.051s] [35m[1mConsolidate compiler generated dependencies of target pcd_publisher[0m
+[0.077s] [ 50%] [32mBuilding CXX object CMakeFiles/pcd_publisher.dir/src/pcd_publish.cpp.o[0m
+[6.452s] [100%] [32m[1mLinking CXX executable pcd_publisher[0m
+[7.123s] [100%] Built target pcd_publisher
+[7.134s] Invoked command in '/home/casso/tools/06_pcd2rviz2/build/pcd2rviz' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/casso/tools/06_pcd2rviz2/build/pcd2rviz -- -j16 -l16
+[7.144s] Invoking command in '/home/casso/tools/06_pcd2rviz2/build/pcd2rviz': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/casso/tools/06_pcd2rviz2/build/pcd2rviz
+[7.150s] -- Install configuration: ""
+[7.150s] -- Installing: /home/casso/tools/06_pcd2rviz2/install/pcd2rviz/lib/pcd2rviz/pcd_publisher
+[7.152s] -- Set runtime path of "/home/casso/tools/06_pcd2rviz2/install/pcd2rviz/lib/pcd2rviz/pcd_publisher" to ""
+[7.152s] -- Installing: /home/casso/tools/06_pcd2rviz2/install/pcd2rviz/share/ament_index/resource_index/package_run_dependencies/pcd2rviz
+[7.152s] -- Installing: /home/casso/tools/06_pcd2rviz2/install/pcd2rviz/share/ament_index/resource_index/parent_prefix_path/pcd2rviz
+[7.152s] -- Installing: /home/casso/tools/06_pcd2rviz2/install/pcd2rviz/share/pcd2rviz/environment/ament_prefix_path.sh
+[7.152s] -- Installing: /home/casso/tools/06_pcd2rviz2/install/pcd2rviz/share/pcd2rviz/environment/ament_prefix_path.dsv
+[7.153s] -- Installing: /home/casso/tools/06_pcd2rviz2/install/pcd2rviz/share/pcd2rviz/environment/path.sh
+[7.153s] -- Installing: /home/casso/tools/06_pcd2rviz2/install/pcd2rviz/share/pcd2rviz/environment/path.dsv
+[7.153s] -- Installing: /home/casso/tools/06_pcd2rviz2/install/pcd2rviz/share/pcd2rviz/local_setup.bash
+[7.153s] -- Installing: /home/casso/tools/06_pcd2rviz2/install/pcd2rviz/share/pcd2rviz/local_setup.sh
+[7.153s] -- Installing: /home/casso/tools/06_pcd2rviz2/install/pcd2rviz/share/pcd2rviz/local_setup.zsh
+[7.153s] -- Installing: /home/casso/tools/06_pcd2rviz2/install/pcd2rviz/share/pcd2rviz/local_setup.dsv
+[7.153s] -- Installing: /home/casso/tools/06_pcd2rviz2/install/pcd2rviz/share/pcd2rviz/package.dsv
+[7.154s] -- Installing: /home/casso/tools/06_pcd2rviz2/install/pcd2rviz/share/ament_index/resource_index/packages/pcd2rviz
+[7.154s] -- Installing: /home/casso/tools/06_pcd2rviz2/install/pcd2rviz/share/pcd2rviz/cmake/pcd2rvizConfig.cmake
+[7.154s] -- Installing: /home/casso/tools/06_pcd2rviz2/install/pcd2rviz/share/pcd2rviz/cmake/pcd2rvizConfig-version.cmake
+[7.154s] -- Installing: /home/casso/tools/06_pcd2rviz2/install/pcd2rviz/share/pcd2rviz/package.xml
+[7.156s] Invoked command in '/home/casso/tools/06_pcd2rviz2/build/pcd2rviz' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/casso/tools/06_pcd2rviz2/build/pcd2rviz
